@@ -19,7 +19,7 @@ define( [ 'App', 'underscore', 'marionette', 'handlebars', 'models/DateTimeModel
                     from:this.$('[name=from]').val(),
                     to:this.$('[name=to]').val()
                 }, {
-                    validateAll: true
+                    silent:true
                 });
 
                 console.log( "Model updated", this.model.toJSON());
@@ -29,7 +29,6 @@ define( [ 'App', 'underscore', 'marionette', 'handlebars', 'models/DateTimeModel
                 this.$('input.date').datepicker({
                     autoclose:true,
                     todayHighlight:true
-
                 });
                 this.$('input.time').timepicker();
 

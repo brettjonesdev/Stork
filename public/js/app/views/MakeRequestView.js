@@ -16,18 +16,40 @@ define([ 'App', 'backbone', 'marionette', 'handlebars', 'views/DateTimeView', 'm
             },
 
             validateAndSubmit:function () {
+                this.updateModel();
                 var allValid = true;
                 this.collection.each(function (model) {
-                    model.validate();
-                    allValid = false;
+                    var forceValidate = true;
+                    if ( !model.isValid(forceValidate) ) {
+                        allValid = false;
+                    }
                 });
 
-                this.model.validate();
-                if (allValid && this.model.isValid()) {
+                var forceValidate = true;
+                if (this.model.isValid(forceValidate) && allValid) {
                     console.log("Valid and saving");
+                    this.saveToServer();
                 } else {
                     console.log("Not valid");
                 }
+            },
+
+            saveToServer: function() {
+                var data = {
+                    name: this.model.get("name"),
+                    email: this.model.get("email"),
+                    message: this.model.get("message"),
+                    dateTimes: this.collection.toJSON()
+                };
+
+                $.ajax({
+                    url: "/makeRequest",
+                    data: data,
+                    type: "POST"
+                }).done(function() { alert("success"); })
+                  .fail(function() { alert("error"); });
+
+                console.log("Saving", data);
             },
 
             initialize:function () {
@@ -40,13 +62,12 @@ define([ 'App', 'backbone', 'marionette', 'handlebars', 'views/DateTimeView', 'm
             },
 
             onRender: function() {
-                this.$('[name=name],[name=email],[name=message]').change( this.updateModel );
                 ViewValidator.bindView(this);
             },
 
             updateModel: function() {
                 this.model.set({
-                    name:this.$('[name=from]').val(),
+                    name:this.$('[name=name]').val(),
                     email:this.$('[name=email]').val(),
                     message:this.$('[name=message]').val()
                 }, {

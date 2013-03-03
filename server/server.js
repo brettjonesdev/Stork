@@ -16,6 +16,8 @@ server.configure(function () {
         dumpExceptions:true,
         showStack:true
     }));
+    server.use(express.bodyParser());
+    server.use(express.methodOverride());
 
     server.use(server.router);
 });
@@ -26,6 +28,6 @@ server.configure(function () {
 // Start Node.js Server
 http.createServer(server).listen(port);
 
-server.post( "/rsvpRequest", requests.makeRequest );
+server.post( "/makeRequest", requests.makeRequest );
 
 console.log('App started on port' + port);

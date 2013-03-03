@@ -19,28 +19,30 @@ define(["backbone", "underscore", "moment", "backbone-validation" ],
                     msg:"Date, please!"
                 },
 
-                from:{
+                from: {
                     required:true,
-                    pattern: /^\d{1,2}[:]\d{2}\s(PM|AM)$/,
-                    msg:'From please'
+                    pattern:/^\d{1,2}[:]\d{2}\s(AM|PM)$/,
+                    msg: "Please enter a valid time"
                 },
                 to: "validateTo"
             },
 
-            validateTo: function(value, attr, computedState) {
+            validateTo: function(toValue, attr, computedState) {
+                var error = undefined;
                 var arbitraryDate = "01/01/2013 ";
                 var fromValue = this.get("from");
                 var fromDate = moment(arbitraryDate + fromValue);
 
-                if ( !value ) {
-                    return "Please Enter a To Date";
+                if ( !toValue ) {
+                    error = "Please enter a valid time";
                 }
                 else {
-                    var toDate = moment(arbitraryDate + value);
-                    if(toDate < fromDate) {
-                        return 'Please enter a valid time range';
+                    var toDate = moment(arbitraryDate + toValue);
+                    if ( toDate < fromDate ) {
+                        error = "Please enter a valid Time Range";
                     }
                 }
+                return error;
             }
 
         });
