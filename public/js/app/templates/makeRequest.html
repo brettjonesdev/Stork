@@ -1,0 +1,34 @@
+<div class="row-fluid">
+    <div class="span12">
+        <h2>Suggest an RSVP </h2>
+        <form class="form">
+            <legend>What works for you?</legend>
+
+            <div class="control-group">
+                <label>Name</label>
+                <input type="text" placeholder="John & Mary Smith" name="name" value="{{name}}"/>
+                <span class="help-inline" data-error></span>
+            </div>
+
+            <div class="control-group">
+                <label>Email</label>
+                <input type="text" placeholder="youremail@address.com" name="email" value="{{email}}"/>
+                <span class="help-inline">(So we can let you know when you get a reply!)</span>
+                <span class="help-inline" data-error></span>
+            </div>
+
+            <div class="control-group">
+                <label>Special Message</label>
+                <textarea type="text" placeholder="Bringing diapers -or- will help with Laundry!" name="message" id="message">{{message}}</textarea>
+                <span class="help-inline" data-error></span>
+            </div>
+
+            <label>What times work for you?</label>
+            <div id="dateTimeContainer"></div>
+            <span id="addDateTime" class="btn btn-info"><i class="icon-plus"></i> Add Another Time</span>
+        </form>
+
+        <button class="submit btn btn-large btn-primary" type="button">Submit</button>
+
+    </div>
+</div>

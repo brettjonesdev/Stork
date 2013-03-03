@@ -10,15 +10,21 @@ require.config({
         "backbone":"../libs/backbone",
         "marionette":"../libs/backbone.marionette",
         "handlebars":"../libs/handlebars",
+        "moment":"../libs/moment.min",
 
         // Plugins
         "backbone.validateAll":"../libs/plugins/Backbone.validateAll",
-        "bootstrap":"../libs/plugins/bootstrap",
+        "backbone-validation":"../libs/plugins/backbone.validation",
+        "bootstrap":"../libs/bootstrap",
+        "bootstrap-timepicker":"../libs/plugins/bootstrap-timepicker.min",
+        "bootstrap-datepicker":"../libs/plugins/bootstrap-datepicker",
         "text":"../libs/plugins/text"
     },
     // Sets the configuration for your third party scripts that are not AMD compatible
     shim:{
         "bootstrap":["jquery"],
+        "bootstrap-timepicker":["bootstrap"],
+        "bootstrap-datepicker":["bootstrap"],
         "jqueryui":["jquery"],
         "backbone":{
             "deps":["underscore"],
@@ -30,6 +36,7 @@ require.config({
             // Exports the global window.Marionette object
             "exports":"Marionette"
         },
+        "backbone-validation":["backbone"],
         "handlebars":{
             "exports":"Handlebars"
         },
