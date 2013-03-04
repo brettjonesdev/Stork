@@ -11,6 +11,7 @@ require.config({
         "marionette":"../libs/backbone.marionette",
         "handlebars":"../libs/handlebars",
         "moment":"../libs/moment.min",
+        "alertify":"../libs/alertify.min",
 
         // Plugins
         "backbone.validateAll":"../libs/plugins/Backbone.validateAll",

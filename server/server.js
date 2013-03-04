@@ -5,6 +5,7 @@ var express = require("express"),
     port = (process.env.PORT || 8001),
     server = module.exports = express(),
     requests = require('./routes/rsvpRequests');
+    baby = require('./routes/baby');
 
 // SERVER CONFIGURATION
 // ====================
@@ -29,5 +30,6 @@ server.configure(function () {
 http.createServer(server).listen(port);
 
 server.post( "/makeRequest", requests.makeRequest );
+server.get("/babyInfo/:id", baby.getInfo);
 
 console.log('App started on port' + port);

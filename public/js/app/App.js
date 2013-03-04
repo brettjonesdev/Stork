@@ -1,5 +1,5 @@
-define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars'],
-    function ($, Backbone, Marionette, _, Handlebars) {
+define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertify'],
+    function ($, Backbone, Marionette, _, Handlebars, Alertify) {
         var App = new Backbone.Marionette.Application();
 
         //Organize Application into regions corresponding to DOM elements
@@ -19,6 +19,20 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars'],
         App.addInitializer(function (options) {
             Backbone.history.start();
         });
+
+
+        //Create App-level logging methods that delegate to Alertify
+        App.error = function(message) {
+            Alertify.error(message);
+        };
+
+        App.log = function(message) {
+            Alertify.log(message);
+        };
+
+        App.success = function(message) {
+            Alertify.success(message);
+        };
 
         return App;
     });

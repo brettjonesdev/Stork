@@ -8,7 +8,7 @@ define([ 'marionette', 'underscore', 'handlebars', 'text!templates/welcome.html'
             },
             goBabyPage: function() {
                 var code = this.$("#babyCode").val();
-                window.location = "#makeRequest/" + code;
+                window.location = "#babyPage/" + code;
                 return false;
             }
         });

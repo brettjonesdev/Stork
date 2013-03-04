@@ -1,0 +1,15 @@
+<div class="hero-unit {{gender}}">
+    <h1><small class="muted">introducing </small> <span class="">{{first}} {{middle}} {{last}}</span></h1>
+    <h4 class="muted">born {{date}} at <strong>{{weight}}</strong> and {{height}}</h4>
+
+    <p>
+        A warm congratulations to
+        {{#if father}}
+        proud parents <strong>{{father}}</strong> and <strong>{{mother}}</strong>
+        {{else}}
+        proud mother <strong>{{mother}}</strong>
+        {{/if}}
+    </p>
+</div>
+<div class="statusContainer"></div>
+<div class="commentsContainer"></div>

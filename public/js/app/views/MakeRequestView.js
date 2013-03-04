@@ -46,8 +46,6 @@ define([ 'App', 'backbone', 'marionette', 'handlebars', 'views/DateTimeView', 'm
                 }).fail(function(err) {
                     alert( err );
                 });
-
-                console.log("Saving", data);
             },
 
             initialize:function (options) {

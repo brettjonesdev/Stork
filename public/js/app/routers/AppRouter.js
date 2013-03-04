@@ -3,8 +3,10 @@ define(['marionette', 'controllers/Controller'], function (Marionette, Controlle
         //"index" must be a method in AppRouter's controller
         appRoutes:{
             "thankYouForRequest":"thankYouForRequest",
+            "babyPage/(:id)":"babyPage",
+            "makeRequest/(:id)":"makeRequest",
+
             //Note: "" is a catch-all route which must go last or it will preempt all other routes!
-            "makeRequest/:id":"makeRequest",
             "" : "welcome"
         }
     });
