@@ -35,24 +35,23 @@ define([ 'App', 'backbone', 'marionette', 'handlebars', 'views/DateTimeView', 'm
             },
 
             saveToServer: function() {
-                var data = {
-                    name: this.model.get("name"),
-                    email: this.model.get("email"),
-                    message: this.model.get("message"),
-                    dateTimes: this.collection.toJSON()
-                };
+                var data = _.extend(this.model.toJSON(), {dateTimes: this.collection.toJSON()});
 
                 $.ajax({
                     url: "/makeRequest",
                     data: data,
                     type: "POST"
-                }).done(function() { alert("success"); })
-                  .fail(function() { alert("error"); });
+                }).done(function(data) {
+                    window.location = "/#thankYouForRequest";
+                }).fail(function(err) {
+                    alert( err );
+                });
 
                 console.log("Saving", data);
             },
 
-            initialize:function () {
+            initialize:function (options) {
+                this.model.set('babyId', options.babyId);
                 _.bindAll(this);
                 this.addNewDateTime();
 
