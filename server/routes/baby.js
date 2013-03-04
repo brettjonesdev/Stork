@@ -14,7 +14,8 @@ exports.getInfo = function (req, res) {
         mother: "Kimberley Marie Jones",
         date: "February 24, 2013",
         weight: "7 lbs, 11 oz",
-        height: "19 in"
+        height: "19 in",
+        acceptingVisits: true
     };
 
     res.json(shim);

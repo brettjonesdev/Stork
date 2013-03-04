@@ -1,5 +1,5 @@
-define([ 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'text!templates/babyPage.html'],
-    function (Marionette, _, Handlebars, BabyModel, template) {
+define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'text!templates/babyPage.html'],
+    function (App, Marionette, _, Handlebars, BabyModel, template) {
         return Marionette.ItemView.extend({
             template:Handlebars.compile(template),
             model: new BabyModel(),
@@ -12,7 +12,7 @@ define([ 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'text!tem
             },
 
             error: function(err) {
-                alert(err);
+                App.error(err);
             }
         });
     });

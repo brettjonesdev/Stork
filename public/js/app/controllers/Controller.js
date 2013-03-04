@@ -10,19 +10,21 @@ define(['App', 'backbone', 'marionette', 'views/BabyPageView', 'views/MakeReques
             },
 
             babyPage:function (id) {
-                if (!id) {
+                if (id) {
+                    App.mainRegion.show(new BabyPageView({babyId:id}));
+                } else {
                     App.error("Please enter a valid Baby Code");
                     window.location = "#";
                 }
-                App.mainRegion.show(new BabyPageView({babyId:id}));
             },
 
             makeRequest:function (id) {
-                if (!id) {
+                if (id) {
+                    App.mainRegion.show(new MakeRequestView({babyId:id}));
+                } else {
                     App.error("Please enter a valid Baby Code");
                     window.location = "#";
                 }
-                App.mainRegion.show(new MakeRequestView({babyId:id}));
             },
 
             thankYouForRequest:function () {
