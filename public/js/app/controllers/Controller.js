@@ -1,5 +1,5 @@
-define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView'],
-    function (App, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView) {
+define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView', 'views/LoadingView'],
+    function (App, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, LoadingView) {
         return Backbone.Marionette.Controller.extend({
             initialize:function (options) {
                 App.headerRegion.show(new HeaderView());
@@ -11,6 +11,9 @@ define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayo
 
             babyPage:function (id) {
                 if (id) {
+                    App.mainRegion.show(new LoadingView({
+                        loadTime: 500
+                    }));
                     var model = new BabyModel({_id:id});
                     model.fetch({
                         success: function(updatedModel) {

@@ -1,16 +1,13 @@
-<div class="babyPage hidden">
-    <div id="babyInfoRegion"></div>
+<div id="babyInfoRegion"></div>
 
-    {{#if acceptingVisits}}
-    <div class="span4 text-center">
-        <h2>Find a time to visit baby {{first}}!</h2>
-        <a href="#makeRequest/{{_id}}" class="btn btn-primary btn-large">Request a Visit</a>
-    </div>
-    <div id="statusFeedRegion" class="span4"></div>
-    <div id="commentsRegion" class="span4"></div>
-    {{else}}
-    <div id="statusFeedRegion" class="span6"></div>
-    <div id="commentsRegion" class="span6"></div>
-    {{/if}}
+{{#if acceptingVisits}}
+<div class="span4 text-center">
+    <h2>Find a time to visit baby {{first}}!</h2>
+    <a href="#makeRequest/{{_id}}" class="btn btn-primary btn-large">Request a Visit</a>
 </div>
-<img class="ajax-loader" src="/img/ajax-loader.gif" alt="loading"/>
+<div id="statusFeedRegion" class="span4"></div>
+<div id="commentsRegion" class="span4"></div>
+{{else}}
+<div id="statusFeedRegion" class="span6"></div>
+<div id="commentsRegion" class="span6"></div>
+{{/if}}
