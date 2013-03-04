@@ -1,5 +1,5 @@
-define(['App', 'backbone', 'marionette', 'views/BabyPageView', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView'],
-    function (App, Backbone, Marionette, BabyPageView, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView) {
+define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView'],
+    function (App, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView) {
         return Backbone.Marionette.Controller.extend({
             initialize:function (options) {
                 App.headerRegion.show(new HeaderView());
@@ -11,7 +11,15 @@ define(['App', 'backbone', 'marionette', 'views/BabyPageView', 'views/MakeReques
 
             babyPage:function (id) {
                 if (id) {
-                    App.mainRegion.show(new BabyPageView({babyId:id}));
+                    var model = new BabyModel({_id:id});
+                    model.fetch({
+                        success: function(updatedModel) {
+                            App.mainRegion.show(new BabyPageLayout({model:updatedModel}));
+                        },
+                        error: function(model, xhr, options) {
+                            App.error("Ajax error");
+                        }
+                    });
                 } else {
                     App.error("Please enter a valid Baby Code");
                     window.location = "#";

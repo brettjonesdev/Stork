@@ -1,26 +1,16 @@
-<div class="hero-unit {{gender}}">
-    <h1><small class="muted">introducing </small> <span class="">{{first}} {{middle}} {{last}}</span></h1>
+<div class="babyPage hidden">
+    <div id="babyInfoRegion"></div>
 
-    <p class="muted">
-        born <strong class="text-info">{{date}}</strong> at <strong class="text-info">{{weight}}</strong> and <strong class="text-info">{{height}}</strong>
-        <br/>
-        to
-        {{#if father}}
-        proud parents <strong class="text-info">{{father}}</strong> and <strong class="text-info">{{mother}}</strong>
-        {{else}}
-        proud mother <strong class="text-info">{{mother}}</strong>
-        {{/if}}
-    </p>
+    {{#if acceptingVisits}}
+    <div class="span4 text-center">
+        <h2>Find a time to visit baby {{first}}!</h2>
+        <a href="#makeRequest/{{_id}}" class="btn btn-primary btn-large">Request a Visit</a>
+    </div>
+    <div id="statusFeedRegion" class="span4"></div>
+    <div id="commentsRegion" class="span4"></div>
+    {{else}}
+    <div id="statusFeedRegion" class="span6"></div>
+    <div id="commentsRegion" class="span6"></div>
+    {{/if}}
 </div>
-
-{{#if acceptingVisits}}
-<div class="span4 text-center">
-    <h2>Find a time to visit baby {{first}}!</h2>
-    <a href="#makeRequest/{{_id}}" class="btn btn-primary btn-large">Request a Visit</a>
-</div>
-<div class="span4 statusContainer"></div>
-<div class="span4 commentsContainer"></div>
-{{else}}
-<div class="span6 statusContainer"></div>
-<div class="span6 commentsContainer"></div>
-{{/if}}
+<img class="ajax-loader" src="/img/ajax-loader.gif" alt="loading"/>
