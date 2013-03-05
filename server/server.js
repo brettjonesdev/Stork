@@ -31,5 +31,7 @@ http.createServer(server).listen(port);
 
 server.post( "/makeRequest", requests.makeRequest );
 server.get("/babyInfo/:id", baby.getInfo);
+server.get("/statusFeed", baby.getStatusFeed);
+server.get("/comments", baby.getComments);
 
 console.log('App started on port' + port);

@@ -34,5 +34,12 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
             Alertify.success(message);
         };
 
+        //Create App-level logging methods that delegate to Alertify
+        App.syncError = function(model, xhr, options) {
+            var message = "Ajax Error: " + options.url;
+            console.log("Error", xhr);
+            Alertify.error(message);
+        };
+
         return App;
     });

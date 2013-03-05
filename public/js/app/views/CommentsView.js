@@ -1,7 +1,7 @@
-define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'text!templates/comments.html'],
-    function (App, Marionette, _, Handlebars, BabyModel, template) {
-        return Marionette.ItemView.extend({
-            template:Handlebars.compile(template),
-            model: new BabyModel()
+define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'collections/CommentsCollection', 'views/CommentView'],
+    function (App, Marionette, _, Handlebars, BabyModel, CommentsCollection, CommentView) {
+        return Marionette.CollectionView.extend({
+            collection:CommentsCollection,
+            itemView: CommentView
         });
     });

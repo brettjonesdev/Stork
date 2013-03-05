@@ -19,9 +19,7 @@ define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayo
                         success: function(updatedModel) {
                             App.mainRegion.show(new BabyPageLayout({model:updatedModel}));
                         },
-                        error: function(model, xhr, options) {
-                            App.error("Ajax error");
-                        }
+                        error: App.syncError
                     });
                 } else {
                     App.error("Please enter a valid Baby Code");
