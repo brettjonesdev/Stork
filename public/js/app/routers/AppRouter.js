@@ -5,6 +5,7 @@ define(['marionette', 'controllers/Controller'], function (Marionette, Controlle
             "thankYouForRequest":"thankYouForRequest",
             "babyPage/(:id)":"babyPage",
             "makeRequest/(:id)":"makeRequest",
+            "create": "create",
 
             //Note: "" is a catch-all route which must go last or it will preempt all other routes!
             "" : "welcome"

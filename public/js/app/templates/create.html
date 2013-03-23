@@ -1,0 +1,56 @@
+<h2>Create your Baby Page </h2>
+<form class="form">
+    <legend>Tell us about yourself</legend>
+
+    <div class="control-group">
+        <label for="email">Email</label>
+        <input type="text" placeholder="youremail@address.com" id="email" name="email" value="{{email}}"/>
+        <span class="help-inline">(Don't worry, we won't share it with anyone, promise)</span>
+        <span class="help-block" data-error></span>
+    </div>
+
+    <div class="control-group">
+        <label for="password">Password</label>
+        <input type="password" placeholder="" id="password" name="password"/>
+        <span class="help-inline" data-error></span>
+    </div>
+
+    <div class="control-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" placeholder="" id="confirmPassword" name="confirmPassword"/>
+        <span class="help-inline" data-error></span>
+    </div>
+
+    <div class="control-group">
+        <label for="babyCode">Baby Code</label>
+        <input type="password" class="input-medium" placeholder="" id="babyCode" name="babyCode"/>
+        <span class="help-inline">Give this unique code to your friends and family to access your baby's page</span>
+        <span class="help-inline" data-error></span>
+    </div>
+
+    <label for="motherFirst">Mother</label>
+    <div class="control-group form-inline">
+        <input type="text" class="input-medium" placeholder="Mother First" id="motherFirst" name="motherFirst" value=""/>
+        <input type="text" class="input-medium" placeholder="Mother Last" id="motherLast" name="motherLast" value=""/>
+        <span class="help-inline" data-error></span>
+    </div>
+
+    <label for="fatherFirst">Father</label>
+    <div class="control-group form-inline">
+        <input type="text" class="input-medium" placeholder="Father First" id="fatherFirst" name="fatherFirst" value=""/>
+        <input type="text" class="input-medium" placeholder="Father Last" id="fatherLast" name="fatherLast" value=""/>
+        <span class="help-inline" data-error></span>
+    </div>
+
+    <label for="babyFirst">Baby</label>
+    <div class="control-group form-inline">
+        <input type="text" class="input-medium" placeholder="Baby First" id="babyFirst" name="babyFirst" value=""/>
+        <input type="text" class="input-medium" placeholder="Middle" id="babyMiddle" name="babyMiddle" value=""/>
+        <input type="text" class="input-medium" placeholder="Baby Last" id="babyLast" name="babyLast" value=""/>
+        <span class="help-inline" data-error></span>
+    </div>
+
+    <input type="submit" class="btn btn-large btn-primary" value="Create"/>
+</form>
+
+

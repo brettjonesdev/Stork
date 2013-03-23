@@ -1,4 +1,4 @@
-var dao = require('../data/dao');
+//var dao = require('../data/dao');
 
 exports.getInfo = function (req, res) {
     var babyId = req.params.id;

@@ -14,7 +14,6 @@ require.config({
         "alertify":"../libs/alertify.min",
 
         // Plugins
-        "backbone.validateAll":"../libs/plugins/Backbone.validateAll",
         "backbone-validation":"../libs/plugins/backbone.validation",
         "bootstrap":"../libs/bootstrap",
         "bootstrap-timepicker":"../libs/plugins/bootstrap-timepicker.min",
@@ -40,14 +39,12 @@ require.config({
         "backbone-validation":["backbone"],
         "handlebars":{
             "exports":"Handlebars"
-        },
-        // Backbone.validateAll plugin (https://github.com/gfranko/Backbone.validateAll)
-        "backbone.validateAll":["backbone"]
+        }
     }
 });
 
 // Includes Desktop Specific JavaScript files here (or inside of your Desktop router)
-require(["App", "routers/AppRouter", "controllers/Controller",  "jquery", "jqueryui", "bootstrap", "backbone.validateAll"],
+require(["App", "routers/AppRouter", "controllers/Controller",  "jquery", "jqueryui", "bootstrap"],
     function (App, AppRouter, Controller) {
         App.appRouter = new AppRouter({
             controller:new Controller()

@@ -1,5 +1,5 @@
-define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView', 'views/LoadingView'],
-    function (App, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, LoadingView) {
+define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView', 'views/CreateUserView', 'views/LoadingView'],
+    function (App, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, CreateUserView, LoadingView) {
         return Backbone.Marionette.Controller.extend({
             initialize:function (options) {
                 App.headerRegion.show(new HeaderView());
@@ -7,6 +7,10 @@ define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayo
 
             welcome:function () {
                 App.mainRegion.show(new WelcomeView());
+            },
+
+            create:function() {
+                App.mainRegion.show(new CreateUserView());
             },
 
             babyPage:function (id) {
