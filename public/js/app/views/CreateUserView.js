@@ -8,30 +8,30 @@ define(["jquery", "underscore", "marionette", "handlebars", "text!templates/crea
         },
 
         events: {
-            "change #email" : "updateEmail"
+            "change form input" : "inputChanged"
         },
         onRender: function() {
             this.$("form").submit(this.trySubmit);
             ViewValidator.bindView(this);
         },
-        updateEmail: function() {
-            //should trigger validation for JUST email
-            this.model.set("email", this.$("#email").val(), {validate: true, validateAll: false});
+
+        inputChanged: function(event) {
+            //update the model with attribute whose input changed, validating only that field
+            var attrMap = {};
+            attrMap[event.srcElement.name] = $(event.srcElement).val();
+            //call set without validate:true to force model to update, then call validate for the attribute changed
+            this.model.set(attrMap).validate(attrMap, {validateAll: false});
         },
+
         trySubmit: function(event) {
             event.preventDefault();
-            var values = {};
-            this.$("form input[type=text], form input[type=password]").each( function() {
-                var attrName = $(this).attr("name");
-                values[attrName] = $(this).val();
-            });
-            this.model.set(values);
             if ( this.model.isValid(true) ) {
                 this.save();
             } else {
                 console.log( "error" );
             }
         },
+
         save: function() {
             console.log("Saving:", this.model.toJSON());
         }
