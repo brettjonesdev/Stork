@@ -14,6 +14,7 @@ require.config({
         "alertify":"../libs/alertify.min",
 
         // Plugins
+        "backbone-validateAll":"../libs/plugins/backbone.validateAll",
         "backbone-validation":"../libs/plugins/backbone.validation",
         "bootstrap":"../libs/bootstrap",
         "bootstrap-timepicker":"../libs/plugins/bootstrap-timepicker.min",
@@ -36,7 +37,8 @@ require.config({
             // Exports the global window.Marionette object
             "exports":"Marionette"
         },
-        "backbone-validation":["backbone"],
+        "backbone-validateAll":["backbone"],
+        "backbone-validation":["backbone", "backbone-validateAll"],
         "handlebars":{
             "exports":"Handlebars"
         }
@@ -44,7 +46,7 @@ require.config({
 });
 
 // Includes Desktop Specific JavaScript files here (or inside of your Desktop router)
-require(["App", "routers/AppRouter", "controllers/Controller",  "jquery", "jqueryui", "bootstrap"],
+require(["App", "routers/AppRouter", "controllers/Controller",  "jquery", "jqueryui", "bootstrap", "backbone-validateAll", "backbone-validation"],
     function (App, AppRouter, Controller) {
         App.appRouter = new AppRouter({
             controller:new Controller()

@@ -13,19 +13,6 @@
         define(['backbone', 'underscore'], factory);
     }
 }(function (Backbone, _) {
-
-    //Backbone.validateAll by gfranko ()
-    Backbone.Model.prototype._validate = function(attrs, options) {
-        if (!options.validate || !this.validate) return true;
-        if (options.validateAll !== false) {
-            attrs = _.extend({}, this.attributes, attrs);
-        }
-        var error = this.validationError = this.validate(attrs, options) || null;
-        if (!error) return true;
-        this.trigger('invalid', this, error, options || {});
-        return false;
-    };
-
     Backbone.Validation = (function(_){
         'use strict';
 

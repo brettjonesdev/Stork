@@ -25,8 +25,8 @@ define(["jquery", "underscore", "marionette", "handlebars", "text!templates/crea
                 var attrName = $(this).attr("name");
                 values[attrName] = $(this).val();
             });
-            this.model.set(values, {validate: true});
-            if ( this.model.isValid() ) {
+            this.model.set(values);
+            if ( this.model.isValid(true) ) {
                 this.save();
             } else {
                 console.log( "error" );
