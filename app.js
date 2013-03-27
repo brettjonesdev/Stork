@@ -1,12 +1,15 @@
 // DEPENDENCIES
 // ============
-var express = require("express"),
-    http = require("http"),
-    port = (process.env.VMC_APP_PORT || 3000),
-    host = (process.env.VCAP_APP_HOST || 'localhost'),
-    server = module.exports = express(),
-    requests = require('./routes/rsvpRequests');
-    baby = require('./routes/baby');
+var express = require("express");
+var http = require("http");
+var port = (process.env.VMC_APP_PORT || 3000);
+var host = (process.env.VCAP_APP_HOST || 'localhost');
+var server = module.exports = express();
+var requests = require('./routes/rsvpRequests');
+var baby = require('./routes/baby');
+var user = require('./routes/user');
+var db = require("./data/mongo");
+
 
 // SERVER CONFIGURATION
 // ====================
@@ -29,12 +32,9 @@ server.configure(function () {
 // Start Node.js Server
 http.createServer(server).listen(port, host);
 
-server.get("/helloWorld", function(req,res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello World\n');
-});
+server.post("/create", user.addUser);
 
-server.post( "/makeRequest", requests.makeRequest );
+server.post("/makeRequest", requests.makeRequest);
 server.get("/babyInfo/:id", baby.getInfo);
 server.get("/statusFeed", baby.getStatusFeed);
 server.get("/comments", baby.getComments);

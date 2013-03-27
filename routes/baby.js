@@ -1,21 +1,25 @@
 //var dao = require('../data/dao');
+var Baby = require("../models/Baby");
+var db = require("../data/mongo");
 
 exports.getInfo = function (req, res) {
     var babyId = req.params.id;
     console.log(babyId);
 
+
     var shim = {
         _id: "abc123",
-        first: "Carter",
-        middle: "Chatman",
-        last: "Jones",
+        babyFirst: "Carter",
+        babyMiddle: "Chatman",
+        babyLast: "Jones",
         gender: "male",
-        father: "Brett Chatman Jones",
-        mother: "Kimberley Marie Jones",
-        date: "February 24, 2013",
+        fatherFirst: "Brett",
+        fatherLast: "Jones",
+        motherFirst: "Kimberley",
+        motherLast: "Jones",
+        birthDate: "February 24, 2013",
         weight: "7 lbs, 11 oz",
-        height: "19 in",
-        acceptingVisits: true
+        height: "19 in"
     };
 
     res.json(shim);

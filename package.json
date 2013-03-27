@@ -25,7 +25,9 @@
     "dependencies":{
         "express":"3.x",
         "underscore":"1.4.2",
-        "emailjs":"0.3.2"
+        "emailjs":"0.3.2",
+        "mongodb":"*",
+        "mongoose":"3.6.0"
     },
     "main":"./server/server",
     "keywords":["Marionette.js", "Backbone.js", "Require.js", "Marionette and Require Boilerplate Lite"]

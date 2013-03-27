@@ -37,11 +37,7 @@ define(["backbone", "backbone-validation"],
                 required:true,
                 pattern:'email',
                 msg:'Please enter a valid Email address so we can let you know when you receive a response!'
-            },
-
-            babyFirst: "validateBaby",
-            babyMiddle: "validateBaby",
-            babyLast: "validateBaby"
+            }
         },
 
         validateBaby: function(val,attr,computedState) {

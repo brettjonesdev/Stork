@@ -1,8 +1,8 @@
-define(["jquery", "underscore", "marionette", "handlebars", "text!templates/create.html", "models/CreateUserModel", "util/ViewValidator"],
-    function($, _, Marionette, Handlebars, template, CreateUserModel, ViewValidator) {
+define(["jquery", "underscore", "marionette", "handlebars", "text!templates/editBaby.html", "models/BabyModel", "util/ViewValidator"],
+    function($, _, Marionette, Handlebars, template, BabyModel, ViewValidator) {
     return Marionette.ItemView.extend({
         template: Handlebars.compile(template),
-        model: new CreateUserModel(),
+        model: new BabyModel(),
         initialize: function() {
             _.bindAll(this);
         },
