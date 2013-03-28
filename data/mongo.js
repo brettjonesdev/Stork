@@ -40,4 +40,4 @@ db.once('open', function () {
 });
 
 //note that db is not initialized at first
-exports.module = db;
+module.exports = db;

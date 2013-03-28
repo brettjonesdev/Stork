@@ -7,7 +7,7 @@ var host = (process.env.VCAP_APP_HOST || 'localhost');
 var server = module.exports = express();
 var requests = require('./routes/rsvpRequests');
 var baby = require('./routes/baby');
-var user = require('./routes/user');
+var users = require('./routes/users');
 var db = require("./data/mongo");
 
 
@@ -32,10 +32,10 @@ server.configure(function () {
 // Start Node.js Server
 http.createServer(server).listen(port, host);
 
-server.post("/create", user.addUser);
+server.post("/create", users.create);
 
 server.post("/makeRequest", requests.makeRequest);
-server.get("/babyInfo/:id", baby.getInfo);
+server.get("/baby/:id", baby.getInfo);
 server.get("/statusFeed", baby.getStatusFeed);
 server.get("/comments", baby.getComments);
 

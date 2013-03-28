@@ -1,6 +1,6 @@
 define(['backbone'], function(Backbone) {
     return Backbone.Model.extend({
-        urlRoot: "/babyInfo",
+        urlRoot: "/baby",
         idAttribute: "_id",
         validation: {
             babyFirst: "validateBaby",

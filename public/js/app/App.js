@@ -23,6 +23,9 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
 
         //Create App-level logging methods that delegate to Alertify
         App.error = function(message) {
+            if ( typeof message === "object" ) {
+                message = ( message.message ? message.message : message.error );
+            }
             Alertify.error(message);
         };
 

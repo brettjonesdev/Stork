@@ -6,14 +6,8 @@ define(["backbone", "backbone-validation"],
         defaults: {
             "email": undefined,
             "password": undefined,
-            "babyCode":undefined,
-            "fatherFirst": undefined,
-            "fatherLast": undefined,
-            "motherFirst": undefined,
-            "motherLast": undefined,
-            "babyFirst": undefined,
-            "babyMiddle": undefined,
-            "babyLast": undefined
+            "confirmPassword": undefined,
+            "babyCode":undefined
         },
 
         validation:{
@@ -37,12 +31,6 @@ define(["backbone", "backbone-validation"],
                 required:true,
                 pattern:'email',
                 msg:'Please enter a valid Email address so we can let you know when you receive a response!'
-            }
-        },
-
-        validateBaby: function(val,attr,computedState) {
-            if ( !computedState.babyFirst || !computedState.babyLast ) {
-                return "Please enter a first and last name";
             }
         }
     });

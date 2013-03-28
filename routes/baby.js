@@ -6,7 +6,6 @@ exports.getInfo = function (req, res) {
     var babyId = req.params.id;
     console.log(babyId);
 
-
     var shim = {
         _id: "abc123",
         babyFirst: "Carter",
@@ -23,17 +22,6 @@ exports.getInfo = function (req, res) {
     };
 
     res.json(shim);
-
-    /*dao.get(babyId, function (err, doc) {
-        if (err) {
-            console.log(err);
-            res.send(500);
-        }
-        else {
-            console.log("retrieved babyInfo: ", doc);
-            res.json(doc);
-        }
-    });*/
 };
 
 exports.getStatusFeed = function(req,res) {

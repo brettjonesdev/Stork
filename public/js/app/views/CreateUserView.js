@@ -1,5 +1,5 @@
-define(["jquery", "underscore", "marionette", "handlebars", "text!templates/create.html", "models/CreateUserModel", "util/ViewValidator"],
-    function($, _, Marionette, Handlebars, template, CreateUserModel, ViewValidator) {
+define(["App", "jquery", "underscore", "marionette", "handlebars", "text!templates/create.html", "models/CreateUserModel", "util/ViewValidator"],
+    function(App, $, _, Marionette, Handlebars, template, CreateUserModel, ViewValidator) {
     return Marionette.ItemView.extend({
         template: Handlebars.compile(template),
         model: new CreateUserModel(),
@@ -35,8 +35,11 @@ define(["jquery", "underscore", "marionette", "handlebars", "text!templates/crea
         save: function() {
             console.log("Saving:", this.model.toJSON());
             this.model.save({
-                success: function() {alert( "Success" )},
-                error: function() {alert( "Error" )}
+                success: function() {
+                    App.success("Success");
+                    //TODO navigate to check your email page
+                },
+                error: App.error
             });
         }
     });
