@@ -20,12 +20,13 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
             Backbone.history.start();
         });
 
+        App.modelError = function(model, res, options) {
+            var message = res.responseText;
+            Alertify.error(message);
+        };
 
         //Create App-level logging methods that delegate to Alertify
         App.error = function(message) {
-            if ( typeof message === "object" ) {
-                message = ( message.message ? message.message : message.error );
-            }
             Alertify.error(message);
         };
 

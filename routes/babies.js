@@ -1,6 +1,4 @@
-//var dao = require('../data/dao');
 var Baby = require("../models/Baby");
-var db = require("../data/mongo");
 
 exports.getInfo = function (req, res) {
     var babyId = req.params.id;

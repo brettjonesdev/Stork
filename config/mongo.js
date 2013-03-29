@@ -1,4 +1,6 @@
 var mongoose = require("mongoose");
+var environment = process.env.NODE_ENV || 'dev';
+var config = require('./config')[environment];
 
 if(process.env.VCAP_SERVICES){
     var env = JSON.parse(process.env.VCAP_SERVICES);
@@ -8,12 +10,12 @@ else{
     mongoConfig = {
         "hostname":"localhost",
         "port":27017,
-        "username":"",
-        "password":"",
-        "name":"",
-        "db":"babyPage"
+        "username":config.username,
+        "password":config.password,
+        "db":config.db
     }
 }
+console.log("mongoConfig", mongoConfig);
 
 var generate_mongo_url = function(obj){
     obj.hostname = (obj.hostname || 'localhost');
@@ -30,14 +32,12 @@ var generate_mongo_url = function(obj){
 var mongoUrl = generate_mongo_url(mongoConfig);
 
 console.log("connecting:", mongoUrl);
-//connect to babyPage
+
 mongoose.connect(mongoUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-
 db.once('open', function () {
-    console.log( "Connected to database" );
+    console.log( "Connected to database:" + mongoUrl );
 });
 
-//note that db is not initialized at first
 module.exports = db;

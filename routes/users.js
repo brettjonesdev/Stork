@@ -1,7 +1,4 @@
-var mongoose = require("mongoose");
 var User = require("../models/User");
-
-//var User = mongoose.model("User");
 
 exports.create = function(req,res) {
     console.log("users.create");
@@ -14,7 +11,7 @@ exports.create = function(req,res) {
 
     user.save(function (err, obj) {
         if (err) {
-            res.json(500, {error: err.message});
+            res.json(500, err.message);
         } else {
             console.log(obj);
             res.json({success: true, object: obj});

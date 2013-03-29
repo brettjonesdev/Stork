@@ -4,39 +4,32 @@ var express = require("express");
 var http = require("http");
 var port = (process.env.VMC_APP_PORT || 3000);
 var host = (process.env.VCAP_APP_HOST || 'localhost');
-var server = module.exports = express();
-var requests = require('./routes/rsvpRequests');
-var baby = require('./routes/baby');
-var users = require('./routes/users');
-var db = require("./data/mongo");
+var db = require("./config/mongo");
+var passport = require("passport");
 
+require('./config/passport')(passport);
 
-// SERVER CONFIGURATION
-// ====================
-server.configure(function () {
-    server.use(express["static"](__dirname + "/public"));
+var app = module.exports = express();
 
-    server.use(express.errorHandler({
+app.configure(function () {
+    app.use(express["static"](__dirname + "/public"));
+
+    app.use(express.errorHandler({
         dumpExceptions:true,
         showStack:true
     }));
-    server.use(express.bodyParser());
-    server.use(express.methodOverride());
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
 
-    server.use(server.router);
+    app.use(app.router);
+
+    app.use(passport.initialize());
+    app.use(passport.session());
 });
 
-// SERVER
-// ======
+require('./config/routes')(app);
 
 // Start Node.js Server
-http.createServer(server).listen(port, host);
+http.createServer(app).listen(port, host);
 
-server.post("/create", users.create);
-
-server.post("/makeRequest", requests.makeRequest);
-server.get("/baby/:id", baby.getInfo);
-server.get("/statusFeed", baby.getStatusFeed);
-server.get("/comments", baby.getComments);
-
-console.log('App started on ' + host + ':' + port);
+console.log('server started on ' + host + ':' + port);

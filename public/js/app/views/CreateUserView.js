@@ -34,12 +34,12 @@ define(["App", "jquery", "underscore", "marionette", "handlebars", "text!templat
 
         save: function() {
             console.log("Saving:", this.model.toJSON());
-            this.model.save({
-                success: function() {
-                    App.success("Success");
-                    //TODO navigate to check your email page
-                },
-                error: App.error
+            this.model.save(this.model.toJSON(),
+                {
+                    success: function() {
+                        App.success("Success");
+                    },
+                    error: App.modelError
             });
         }
     });

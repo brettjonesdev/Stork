@@ -27,7 +27,9 @@
         "underscore":"1.4.2",
         "emailjs":"0.3.2",
         "mongodb":"*",
-        "mongoose":"3.6.0"
+        "mongoose":"3.6.0",
+        "passport": "latest",
+        "passport-local": "latest"
     },
     "main":"./server/server",
     "keywords":["Marionette.js", "Backbone.js", "Require.js", "Marionette and Require Boilerplate Lite"]
