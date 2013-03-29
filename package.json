@@ -1,7 +1,7 @@
 {
     "name":"MRB-Lite",
     "title":"Marionette and Require Boilerplate Lite",
-    "description":"A Lightweight Marionette.js and Require.js Boilerplate that promotes decoupling your JavaScript into modules, separating business logic from application logic using Models and Views, organizing your application into Regions with default build-up/tear-down logic for you Views, including non-AMD Compatible Third Party Scripts in your project, and optimizing all of your JavaScript (minify, concatenate, etc).",
+    "description":"",
     "version":"1.0.0",
     "homepage":"https://github.com/brettjonesdev/MRB-Lite",
     "author":{

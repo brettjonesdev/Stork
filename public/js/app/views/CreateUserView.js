@@ -34,13 +34,13 @@ define(["App", "jquery", "underscore", "marionette", "handlebars", "text!templat
 
         save: function() {
             console.log("Saving:", this.model.toJSON());
-            this.model.save(this.model.toJSON(),
-                {
+            this.model.save(this.model.toJSON(), {
                     success: function() {
-                        App.success("Success");
+                        App.success("Account created - sending verification email");
+                        window.location = "#verifyAccount";
                     },
                     error: App.modelError
-            });
+                });
         }
     });
 });

@@ -4,6 +4,8 @@ var crypto = require('crypto');
 var UserSchema = new mongoose.Schema({
     email: { type:String, unique: true },
     babyCode:{ type:String, unique: true },
+    active: Boolean,
+    tempAuthCode: String,
     hashedPassword: String
 });
 
@@ -16,12 +18,21 @@ var UserSchema = new mongoose.Schema({
  .get(function() { return this._password });
 
 UserSchema.methods = {
+    authenticateOnceWithCode: function(code) {
+        if ( code === this.tempAuthCode ) {
+            this.set("tempAuthCode", undefined );
+            this.set("active", true);
+            return true;
+        }
+        return false;
+    },
+
     authenticate: function(plainText) {
-        return this.encryptPassword(plainText) === this.hashed_password
+        return (( this.encryptPassword(plainText) === this.hashed_password) && this.active);
     },
 
     makeSalt: function() {
-        return Math.round((new Date().valueOf() * Math.random())) + ''
+        return Math.round((new Date().valueOf() * Math.random())) + '';
     },
 
     encryptPassword: function(password) {

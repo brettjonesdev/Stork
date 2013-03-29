@@ -6,6 +6,8 @@ define(['marionette', 'controllers/Controller'], function (Marionette, Controlle
             "babyPage/(:id)":"babyPage",
             "makeRequest/(:id)":"makeRequest",
             "create": "create",
+            "checkYourEmail":"checkYourEmail",
+            "verify/:code":"verify",
 
             //Note: "" is a catch-all route which must go last or it will preempt all other routes!
             "" : "welcome"
