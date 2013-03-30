@@ -19,12 +19,7 @@ var UserSchema = new mongoose.Schema({
 
 UserSchema.methods = {
     authenticateOnceWithCode: function(code) {
-        if ( code === this.tempAuthCode ) {
-            this.set("tempAuthCode", undefined );
-            this.set("active", true);
-            return true;
-        }
-        return false;
+        return ( code === this.tempAuthCode );
     },
 
     authenticate: function(plainText) {

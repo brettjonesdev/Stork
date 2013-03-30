@@ -7,6 +7,7 @@ module.exports = function (app) {
     console.log("configuring routes");
     //User
     app.post("/create", users.create);
+    app.post("/tempAuth", users.authorize);
 
     //Open
     app.post("/makeRequest", requests.makeRequest);

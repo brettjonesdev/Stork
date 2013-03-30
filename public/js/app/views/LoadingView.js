@@ -1,7 +1,7 @@
-define(['marionette', 'jquery', 'handlebars', 'text!templates/loading.html'],
-    function (Marionette, $, Handlebars, template) {
+define(['backbone', 'marionette', 'jquery', 'handlebars', 'text!templates/loading.html'],
+    function (Backbone, Marionette, $, Handlebars, template) {
         return Marionette.ItemView.extend({
-            template:template,
+            template:Handlebars.compile(template),
             loadTime:1000,
             stepCount:10,
             initialize:function (options) {
@@ -10,6 +10,9 @@ define(['marionette', 'jquery', 'handlebars', 'text!templates/loading.html'],
                 }
                 if (options && options.stepCount) {
                     this.stepCount = options.stepCount;
+                }
+                if (options.message) {
+                    this.model = new Backbone.Model({message:options.message});
                 }
 
             },

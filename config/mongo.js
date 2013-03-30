@@ -40,4 +40,5 @@ db.once('open', function () {
     console.log( "Connected to database:" + mongoUrl );
 });
 
-module.exports = db;
+exports.db = db;
+exports.mongoUrl = mongoUrl;

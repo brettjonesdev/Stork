@@ -27,6 +27,7 @@
         "underscore":"1.4.2",
         "emailjs":"0.3.2",
         "mongodb":"*",
+        "connect-mongo": "latest",
         "mongoose":"3.6.0",
         "passport": "latest",
         "passport-local": "latest"

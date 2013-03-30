@@ -1,5 +1,5 @@
-define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView', 'views/CreateUserView', 'views/LoadingView', 'views/PlainTextView'],
-    function (App, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, CreateUserView, LoadingView, PlainTextView) {
+define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView', 'views/CreateUserView', 'views/LoadingView', 'views/PlainTextView', 'models/UserAccountModel', 'views/EditAccountView'],
+    function (App, $, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, CreateUserView, LoadingView, PlainTextView, UserAccountModel, EditAccountView) {
         return Backbone.Marionette.Controller.extend({
             initialize:function (options) {
                 App.headerRegion.show(new HeaderView());
@@ -21,9 +21,22 @@ define(['App', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayo
             },
 
             verify: function(id) {
-                App.mainRegion.show(new PlainTextView({
-                    text: "authCode: " + id
+                $.post( "/tempAuth", {
+                    tempAuthCode: id
+                }).done(function() { App.mainRegion.show(new EditAccountView()); })
+                    .fail(function() {
+                        App.mainRegion.show(new PlainTextView({
+                            cssClass: 'alert alert-error',
+                            text: "Unable to verify this account.  Please try again.",
+                            subText: "If you are still unable to verify your account, please contact us at at <a href='mailto:babypageapp@gmail.com'>babypageapp@gmail.com</a>"
+                        }));
+                    });
+
+                App.mainRegion.show(new LoadingView({
+                    message: "Verifying account...",
+                    loadTime: 2000
                 }));
+
             },
 
             babyPage:function (id) {

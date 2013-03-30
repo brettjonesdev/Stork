@@ -1,5 +1,40 @@
 var User = require("../models/User");
 var email = require("../util/email");
+var passport = require("passport");
+
+exports.authorize = function (req, res) {
+    console.log("users.authorize", req.body);
+    var code = req.body.tempAuthCode;
+
+    User.findOne({tempAuthCode:code}, function (err, document) {
+        if (err) {
+            res.json(500, err);
+        }
+        else if (!document) {
+            res.json(500, "Unable to find User with this tempAuthCode")
+        }
+        else {
+            document.tempAuthCode = undefined;
+            document.active = true;
+            document.save(function(err,doc) {
+                if ( err ) {
+                    res.json(500,err);
+                }
+                else {
+                    req.login(doc, function(err) {
+                        if (err) {
+                            res.json(300, "Not authorized");
+                        } else {
+                            res.json(200, {userId:doc.get("_id")});
+                        }
+                    });
+
+
+                }
+            });
+        }
+    });
+};
 
 exports.create = function(req,res) {
     console.log("users.create");
