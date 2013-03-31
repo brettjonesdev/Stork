@@ -8,8 +8,9 @@ define(['marionette', 'controllers/Controller'], function (Marionette, Controlle
             "create": "create",
             "checkYourEmail":"checkYourEmail",
             "verify/:code":"verify",
+            "editPage/:userId":"editPage",
 
-            //Note: "" is a catch-all route which must go last or it will preempt all other routes!
+            //catch-all route which *must go last* or it will preempt all other routes!
             "" : "welcome"
         }
     });

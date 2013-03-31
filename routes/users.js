@@ -25,7 +25,12 @@ exports.authorize = function (req, res) {
                         if (err) {
                             res.json(300, "Not authorized");
                         } else {
-                            res.json(200, {userId:doc.get("_id")});
+                            res.json(200,
+                                {
+                                    userId:doc.get("_id"),
+                                    babyCode: doc.get("babyCode")
+                                }
+                            );
                         }
                     });
 

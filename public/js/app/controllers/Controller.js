@@ -1,5 +1,5 @@
-define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView', 'views/CreateUserView', 'views/LoadingView', 'views/PlainTextView', 'models/UserAccountModel', 'views/EditAccountView'],
-    function (App, $, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, CreateUserView, LoadingView, PlainTextView, UserAccountModel, EditAccountView) {
+define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView', 'views/CreateUserView', 'views/LoadingView', 'views/PlainTextView', 'models/UserAccountModel', 'views/EditPageView'],
+    function (App, $, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, CreateUserView, LoadingView, PlainTextView, UserAccountModel, EditPageView) {
         return Backbone.Marionette.Controller.extend({
             initialize:function (options) {
                 App.headerRegion.show(new HeaderView());
@@ -20,11 +20,17 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
                 }));
             },
 
+            editPage: function(userId) {
+                var babyModel = new BabyModel({userId: userId});
+                App.mainRegion.show(new EditPageView({model:babyModel}));
+            },
+
             verify: function(id) {
                 $.post( "/tempAuth", {
                     tempAuthCode: id
-                }).done(function() { App.mainRegion.show(new EditAccountView()); })
-                    .fail(function() {
+                }).done(function(res) {
+                        window.location = "#editPage/" + res.userId;
+                    }).fail(function() {
                         App.mainRegion.show(new PlainTextView({
                             cssClass: 'alert alert-error',
                             text: "Unable to verify this account.  Please try again.",
@@ -39,18 +45,17 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
 
             },
 
-            babyPage:function (id) {
-                if (id) {
+            babyPage:function (babyCode) {
+                if (babyCode) {
                     App.mainRegion.show(new LoadingView({
                         loadTime: 500
                     }));
-                    var model = new BabyModel({_id:id});
-                    model.fetch({
-                        success: function(updatedModel) {
-                            App.mainRegion.show(new BabyPageLayout({model:updatedModel}));
-                        },
-                        error: App.syncError
-                    });
+
+                    $.getJSON("/babyByCode/" + babyCode, function(data) {
+                            console.log(data);
+                            var babyModel = new BabyModel(data);
+                            App.mainRegion.show(new BabyPageLayout({model:babyModel}));
+                        });
                 } else {
                     App.error("Please enter a valid Baby Code");
                     window.location = "#";

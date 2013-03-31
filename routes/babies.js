@@ -1,25 +1,74 @@
+var mongoose = require('mongoose');
 var Baby = require("../models/Baby");
+
+var shim = {
+    _id: "abc123",
+    userId: "abc123xyz456",
+    babyFirst: "Carter",
+    babyMiddle: "Chatman",
+    babyLast: "Jones",
+    gender: "male",
+    fatherFirst: "Brett",
+    fatherLast: "Jones",
+    motherFirst: "Kimberley",
+    motherLast: "Jones",
+    birthDate: "February 24, 2013",
+    weight: "7 lbs, 11 oz",
+    height: "19 in"
+};
+
+exports.getByBabyCode = function(req, res) {
+    var babyCode= req.params.babyCode;
+    Baby.findOne({babyCode: babyCode}, function(err, doc) {
+        if (err) {
+            res.json(500, err.message);
+        } else {
+            res.json(doc);
+        }
+    });
+};
+
+exports.getByUserId = function(req, res) {
+    var userId= req.params.userId;
+    Baby.findOne({userId: userId}, function(err, doc) {
+        if (err) {
+            res.json(500, err.message);
+        } else {
+            res.json(doc);
+        }
+    });
+};
 
 exports.getInfo = function (req, res) {
     var babyId = req.params.id;
-    console.log(babyId);
 
-    var shim = {
-        _id: "abc123",
-        babyFirst: "Carter",
-        babyMiddle: "Chatman",
-        babyLast: "Jones",
-        gender: "male",
-        fatherFirst: "Brett",
-        fatherLast: "Jones",
-        motherFirst: "Kimberley",
-        motherLast: "Jones",
-        birthDate: "February 24, 2013",
-        weight: "7 lbs, 11 oz",
-        height: "19 in"
-    };
+    Baby.findOne({_id: babyId}, function(err, doc) {
+        if (err) {
+            res.json(500, err.message);
+        } else {
+            res.json(doc);
+        }
+    });
+};
 
-    res.json(shim);
+exports.createBaby = function(req,res) {
+    console.log(req.body);
+
+    var data = req.body;
+    var userId = mongoose.Types.ObjectId(req.body.userId);
+    data.userId = userId;
+
+    var baby = new Baby(data);
+    baby.save(function(err, doc) {
+        console.log(doc);
+        if ( err) {
+            res.json(500, err.message);
+        } else {
+            res.json(doc);
+        }
+    });
+
+    res.json({});
 };
 
 exports.getStatusFeed = function(req,res) {

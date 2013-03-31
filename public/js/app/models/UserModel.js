@@ -1,7 +1,7 @@
 define(["backbone", "backbone-validation"],
     function(Backbone) {
     return Backbone.Model.extend({
-        urlRoot: "/create",
+        urlRoot: "/user",
         idAttribute: "_id",
         defaults: {
             "email": undefined,

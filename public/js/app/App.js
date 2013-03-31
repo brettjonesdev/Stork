@@ -10,7 +10,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
         });
 
         function isMobile() {
-            var ua = (navigator.userAgent || navigator.vendor || window.opera, window, window.document);
+            var ua = (navigator.userAgent || navigator.vendor || window.opera);
             return (/iPhone|iPod|iPad|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
         }
 
