@@ -61,14 +61,12 @@ exports.createBaby = function(req,res) {
     var baby = new Baby(data);
     baby.save(function(err, doc) {
         console.log(doc);
-        if ( err) {
+        if (err) {
             res.json(500, err.message);
         } else {
-            res.json(doc);
+            res.json({});
         }
     });
-
-    res.json({});
 };
 
 exports.getStatusFeed = function(req,res) {

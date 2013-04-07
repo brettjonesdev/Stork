@@ -1,8 +1,15 @@
 <form class="form">
     <legend>Tell us about you and your child</legend>
 
-    <h2>Family Information</h2>
-    <label for="babyFirst">Baby</label>
+    <div class="control-group">
+        <label for="babyCode">Create a Baby Code</label>
+        <input type="text" class="input-medium" placeholder="i.e. BabyJohn2013" id="babyCode" name="babyCode"/>
+        <span class="help-inline">Enter a unique code to give to friends and family to access your baby's page</span>
+        <span class="help-inline" data-error></span>
+    </div>
+
+    <h2>Baby</h2>
+    <label for="babyFirst">Baby Name</label>
     <div class="control-group form-inline">
         <input type="text" class="input-medium" placeholder="Baby First" id="babyFirst" name="babyFirst" value=""/>
         <input type="text" class="input-medium" placeholder="Middle" id="babyMiddle" name="babyMiddle" value=""/>
@@ -10,24 +17,32 @@
         <span class="help-inline" data-error></span>
     </div>
 
-    <label for="motherFirst">Mother</label>
+    <h2>Parent(s)</h2>
+
     <div class="control-group form-inline">
-        <input type="text" class="input-medium" placeholder="Mother First" id="motherFirst" name="motherFirst" value=""/>
-        <input type="text" class="input-medium" placeholder="Mother Last" id="motherLast" name="motherLast" value=""/>
+        <div class="gender-select btn-group" data-toggle="buttons-radio">
+            <button name="parent1.gender" value="Mother" type="button" class="btn btn-primary active">Mother</button>
+            <button name="parent1.gender" value="Father" type="button" class="btn btn-primary">Father</button>
+        </div>
+        <input type="text" class="input-medium" placeholder="First" id="parent1.first" name="parent1.first" value=""/>
+        <input type="text" class="input-medium" placeholder="Middle" id="parent1.middle" name="parent1.middle" value=""/>
+        <input type="text" class="input-medium" placeholder="Last" id="parent1.last" name="parent1.last" value=""/>
         <span class="help-inline" data-error></span>
     </div>
 
-    <label for="fatherFirst">Father</label>
     <div class="control-group form-inline">
-        <input type="text" class="input-medium" placeholder="Father First" id="fatherFirst" name="fatherFirst" value=""/>
-        <input type="text" class="input-medium" placeholder="Father Last" id="fatherLast" name="fatherLast" value=""/>
+        <div class="gender-select btn-group" data-toggle="buttons-radio">
+            <button name="parent2.gender" value="Mother" type="button" class="btn btn-primary">Mother</button>
+            <button name="parent2.gender" value="Father" type="button" class="btn btn-primary active">Father</button>
+        </div>
+        <span class="muted">(optional)</span>
+        <input type="text" class="input-medium" placeholder="First" id="parent2.first" name="parent2.first" value=""/>
+        <input type="text" class="input-medium" placeholder="Middle" id="parent2.middle" name="parent2.middle" value=""/>
+        <input type="text" class="input-medium" placeholder="Last" id="parent2.last" name="parent2.last" value=""/>
         <span class="help-inline" data-error></span>
     </div>
-
 
     <div class="form-actions">
         <input type="submit" class="btn btn-large btn-primary" value="Save"/>
     </div>
 </form>
-
-

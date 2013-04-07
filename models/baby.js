@@ -2,12 +2,10 @@ var mongoose = require("mongoose");
 var Schema  = mongoose.Schema;
 
 var BabySchema = new Schema({
-    userId: Schema.Types.ObjectId,
-    babyCode:String,
-    fatherFirst: String,
-    fatherLast: String,
-    motherFirst: String,
-    motherLast: String,
+    userId: {type: Schema.Types.ObjectId, required: true},
+    babyCode:{ type:String, unique: true, required: true },
+    parent1: {first: String, middle: String, last: String, gender: String},
+    parent2: {first: String, middle: String, last: String, gender: String},
     babyFirst: String,
     babyMiddle: String,
     babyLast: String,

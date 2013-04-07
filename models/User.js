@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
+var ObjectID = require('mongodb').ObjectID;
 
 var UserSchema = new mongoose.Schema({
     email: { type:String, unique: true },
-    babyCode:{ type:String, unique: true },
+
     active: Boolean,
     tempAuthCode: String,
     hashedPassword: String
@@ -17,6 +18,8 @@ var UserSchema = new mongoose.Schema({
  })
  .get(function() { return this._password });
 
+
+//instance methods
 UserSchema.methods = {
     authenticateOnceWithCode: function(code) {
         return ( code === this.tempAuthCode );
@@ -36,5 +39,12 @@ UserSchema.methods = {
     }
 };
 
+//static methods
+UserSchema.statics.generateTempAuthCode = function() {
+    var code = new ObjectID();
+    return code.toString();
+};
+
 var User = mongoose.model("User", UserSchema);
+
 module.exports = User;

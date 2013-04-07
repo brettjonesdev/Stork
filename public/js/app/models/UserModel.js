@@ -22,10 +22,6 @@ define(["backbone", "backbone-validation"],
                 equalTo: "password",
                 msg:"Please re-enter the same password as above"
             },
-            babyCode: {
-                required: true,
-                msg: "Please enter a valid, unique code to access your page"
-            },
 
             email:{
                 required:true,

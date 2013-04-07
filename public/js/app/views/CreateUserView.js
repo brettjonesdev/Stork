@@ -10,6 +10,7 @@ define(["App", "jquery", "underscore", "marionette", "handlebars", "text!templat
         events: {
             "change form input" : "inputChanged"
         },
+
         onRender: function() {
             this.$("form").submit(this.trySubmit);
             ViewValidator.bindView(this);
@@ -37,7 +38,7 @@ define(["App", "jquery", "underscore", "marionette", "handlebars", "text!templat
             this.model.save(this.model.toJSON(), {
                     success: function() {
                         App.success("Account created - sending verification email");
-                        window.location = "#verifyAccount";
+                        window.location = "#checkYourEmail";
                     },
                     error: App.modelError
                 });

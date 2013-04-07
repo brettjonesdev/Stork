@@ -1,6 +1,5 @@
 var User = require("../models/User");
 var email = require("../util/email");
-var passport = require("passport");
 
 exports.authorize = function (req, res) {
     console.log("users.authorize", req.body);
@@ -47,7 +46,7 @@ exports.create = function(req,res) {
     var userInfo = req.body;
     console.log("userInfo",userInfo);
     userInfo.active = false;
-    var tempAuthCode = Math.round((new Date().valueOf() * Math.random())) + '';
+    var tempAuthCode = User.generateTempAuthCode();
     userInfo.tempAuthCode = tempAuthCode;
 
     var user = new User(userInfo);
