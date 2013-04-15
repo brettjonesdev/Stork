@@ -2,16 +2,16 @@ module.exports = {
     "dev": {
         db: "dev",
         username:"",
-        password:"",
+        password:""
     },
     "test": {
         db: "test",
         username:"",
-        password:"",
+        password:""
     },
     "prod": {
         db: "prod",
         username:"",
-        password:"",
+        password:""
     }
 }

@@ -6,8 +6,7 @@ define(["backbone", "backbone-validation"],
         defaults: {
             "email": undefined,
             "password": undefined,
-            "confirmPassword": undefined,
-            "babyCode":undefined
+            "confirmPassword": undefined
         },
 
         validation:{

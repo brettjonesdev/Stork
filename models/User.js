@@ -4,7 +4,6 @@ var ObjectID = require('mongodb').ObjectID;
 
 var UserSchema = new mongoose.Schema({
     email: { type:String, unique: true },
-
     active: Boolean,
     tempAuthCode: String,
     hashedPassword: String
@@ -21,10 +20,6 @@ var UserSchema = new mongoose.Schema({
 
 //instance methods
 UserSchema.methods = {
-    authenticateOnceWithCode: function(code) {
-        return ( code === this.tempAuthCode );
-    },
-
     authenticate: function(plainText) {
         return (( this.encryptPassword(plainText) === this.hashed_password) && this.active);
     },

@@ -9,6 +9,11 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
             mainRegion:"#main"
         });
 
+        App.vent.on("loggedInUser", function(userModel) {
+            this.userModel = userModel;
+            console.log("logged in", userModel);
+        });
+
         function isMobile() {
             var ua = (navigator.userAgent || navigator.vendor || window.opera);
             return (/iPhone|iPod|iPad|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);

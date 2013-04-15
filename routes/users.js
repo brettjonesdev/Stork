@@ -1,5 +1,21 @@
 var User = require("../models/User");
+var Baby = require("../models/Baby");
 var email = require("../util/email");
+var passport = require("passport");
+
+exports.requireAuthentication = function (req, res, next) {
+    if (!req.user) {
+        res.json(401, "Not logged in");
+    } else {
+        //authenticated, pass along to real handler
+        next();
+    }
+};
+
+exports.getBlah = function(req,res) {
+    console.log("blah", req.user);
+    res.json(req.user);
+};
 
 exports.authorize = function (req, res) {
     console.log("users.authorize", req.body);
@@ -18,11 +34,10 @@ exports.authorize = function (req, res) {
             document.save(function(err,doc) {
                 if ( err ) {
                     res.json(500,err);
-                }
-                else {
+                } else {
                     req.login(doc, function(err) {
                         if (err) {
-                            res.json(300, "Not authorized");
+                            res.json(401, "Not authorized");
                         } else {
                             res.json(200,
                                 {
@@ -34,6 +49,36 @@ exports.authorize = function (req, res) {
                     });
 
 
+                }
+            });
+        }
+    });
+};
+
+exports.logInUser = function(req, res) {
+    var query = {
+        email: req.body.email
+    };
+    User.findOne(query, function(err, document) {
+        if (err) {
+            console.log("Unable to log in user", req.body, err);
+            res.json(500, "Error logging in user");
+        } else {
+            req.login(document, function(err) {
+                if ( err ) {
+                    res.json(401, "Not authorized");
+                } else {
+                    var userInfo = document;
+                    Baby.findOne({userId: document._id}, function(err, doc) {
+                        if (err) {
+                            console.log(err);
+                            //No baby info found for user yet - not necessarily an error
+                        } else {
+                            //Assign baby info to userInfo.baby
+                            userInfo.baby = doc;
+                        }
+                        res.json(userInfo);
+                    });
                 }
             });
         }

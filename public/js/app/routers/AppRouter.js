@@ -1,6 +1,7 @@
 define(['marionette', 'controllers/Controller'], function (Marionette, Controller) {
     return Marionette.AppRouter.extend({
-        //"index" must be a method in AppRouter's controller
+        controller: new Controller(),
+
         appRoutes:{
             "thankYouForRequest":"thankYouForRequest",
             "babyPage/(:id)":"babyPage",
@@ -9,6 +10,7 @@ define(['marionette', 'controllers/Controller'], function (Marionette, Controlle
             "checkYourEmail":"checkYourEmail",
             "verify/:code":"verify",
             "editPage/:userId":"editPage",
+            "logIn":"logIn",
 
             //catch-all route which *must go last* or it will preempt all other routes!
             "" : "welcome"

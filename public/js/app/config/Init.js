@@ -48,10 +48,9 @@ require.config({
 });
 
 // Includes Desktop Specific JavaScript files here (or inside of your Desktop router)
-require(["App", "routers/AppRouter", "controllers/Controller",  "jquery", "bootstrap", "backbone-validateAll", "backbone-validation", "backbone-deep-model"],
-    function (App, AppRouter, Controller) {
-        App.appRouter = new AppRouter({
-            controller:new Controller()
-        });
+require(["App", "routers/AppRouter", "routers/SecureRouter",  "jquery", "bootstrap", "backbone-validateAll", "backbone-validation", "backbone-deep-model"],
+    function (App, AppRouter, SecureRouter) {
+        App.appRouter = new AppRouter();
+        App.secureRouter = new SecureRouter();
         App.start();
     });
