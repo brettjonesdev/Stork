@@ -4,7 +4,7 @@ define(['App', 'marionette', 'controllers/SecureController'],
         controller: new SecureController(),
         //Routes for authenticated user
         appRoutes:{
-            "editPage/:userId":"editPage"
+            "editPage":"editPage"
         },
 
         initialize: function() {

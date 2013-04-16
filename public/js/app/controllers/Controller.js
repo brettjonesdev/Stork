@@ -1,5 +1,5 @@
-define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView', 'views/CreateUserView', 'views/LoadingView', 'views/PlainTextView', 'models/UserAccountModel', 'views/EditPageView', 'views/LoginView'],
-    function (App, $, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, CreateUserView, LoadingView, PlainTextView, UserAccountModel, EditPageView, LoginView) {
+define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/BabyPageLayout', 'views/MakeRequestView', 'views/HeaderView', 'views/ThankYouForRequestView', 'views/WelcomeView', 'views/CreateUserView', 'views/LoadingView', 'views/PlainTextView', 'views/EditPageView', 'views/LoginView'],
+    function (App, $, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, CreateUserView, LoadingView, PlainTextView, EditPageView, LoginView) {
         return Backbone.Marionette.Controller.extend({
             initialize:function (options) {
                 App.headerRegion.show(new HeaderView());
@@ -7,7 +7,7 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
                 App.vent.on("loggedInUser", function(model) {
                     App.headerRegion.show(new HeaderView({model: model}))
                 });
-                App.vent.on("loggedOutUser", function(model) {
+                App.vent.on("loggedOutUser", function() {
                     App.headerRegion.show(new HeaderView())
                 });
             },
@@ -29,11 +29,6 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
                     text: "Please verify your email",
                     subText: "We have sent you an email with a link to confirm your email address and continue setting up your account."
                 }));
-            },
-
-            editPage: function(userId) {
-                var babyModel = new BabyModel({userId: userId});
-                App.mainRegion.show(new EditPageView({model:babyModel}));
             },
 
             verify: function(id) {

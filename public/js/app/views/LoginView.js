@@ -3,11 +3,6 @@ define([ 'App', 'backbone', 'marionette', 'views/base/FormView', 'models/LogInMo
         return FormView.extend({
             template:Handlebars.compile(template),
             model: new LogInModel(),
-            onSaveSuccess: function(model) {
-                console.log("Logged In!");
-                App.success("Logged In!");
-                App.vent.trigger("loggedInUser", model);
-                window.location = "#babyPage/" + model.get("baby").babyCode;
-            }
+            onSaveSuccess: App.logInUser
         });
     });

@@ -1,5 +1,5 @@
-define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertify'],
-    function ($, Backbone, Marionette, _, Handlebars, Alertify) {
+define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertify', 'models/UserModel', 'models/BabyModel'],
+    function ($, Backbone, Marionette, _, Handlebars, Alertify, UserModel, BabyModel) {
         var App = new Backbone.Marionette.Application();
 
         //Organize Application into regions corresponding to DOM elements
@@ -9,13 +9,23 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
             mainRegion:"#main"
         });
 
-        App.vent.on("loggedInUser", function(userModel) {
+        App.logInUser = function(model, response) {
+            console.log("Logged In!", response);
+            App.success("Logged In!");
+
+            var userModel = new UserModel(_.omit(response, 'baby'));
+            var babyModel = new BabyModel(response.baby);
+
             this.userModel = userModel;
-            console.log("logged in", userModel.toJSON());
-        });
+            this.babyModel = babyModel;
+
+            App.vent.trigger("loggedInUser", userModel);
+            window.location = "#babyPage/" + model.get("baby").babyCode;
+        };
 
         App.logOutUser = function() {
             App.userModel = undefined;
+            App.babyModel = undefined;
             App.vent.trigger("loggedOutUser");
             $.post( "/logOut", {}).done(function(res) {
                     App.success("Logged out");
