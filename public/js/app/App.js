@@ -9,24 +9,29 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
             mainRegion:"#main"
         });
 
-        App.logInUser = function(model, response) {
+        App.logInUser = function(response, skipRedirect) {
             console.log("Logged In!", response);
             App.success("Logged In!");
 
             var userModel = new UserModel(_.omit(response, 'baby'));
             var babyModel = new BabyModel(response.baby);
 
+            document.cookie = "babyapp-email=" + userModel.get("email");
             this.userModel = userModel;
             this.babyModel = babyModel;
 
+            if( skipRedirect !== true ) {
+                window.location = "#babyPage/" + babyModel.get("babyCode");
+            }
+
             App.vent.trigger("loggedInUser", userModel);
-            window.location = "#babyPage/" + model.get("baby").babyCode;
         };
 
         App.logOutUser = function() {
             App.userModel = undefined;
             App.babyModel = undefined;
             App.vent.trigger("loggedOutUser");
+            document.cookie = "";
             $.post( "/logOut", {}).done(function(res) {
                     App.success("Logged out");
                     window.location = "#";
@@ -43,8 +48,20 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
         App.mobile = isMobile();
 
         App.addInitializer(function (options) {
-            //TODO pull in user info
-            Backbone.history.start();
+            if ( document.cookie.indexOf("babyapp-email") > -1 ) {
+                //get user Info if logged in
+                $.get("/userInfo").done(function(res) {
+                    console.log(res);
+                    App.logInUser(res, true);
+                }).fail(function(){
+                    console.log("Not logged in");
+
+                }).always(function() {
+                    Backbone.history.start();
+                });
+            } else {
+                Backbone.history.start();
+            }
         });
 
         App.modelError = function(model, res, options) {

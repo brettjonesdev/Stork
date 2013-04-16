@@ -60,6 +60,17 @@ exports.logOutUser =  function(req, res){
     res.json();
 };
 
+exports.getUserInfo = function(req,res) {
+    User.findOne({_id: req.user._id}, function(err,userDoc) {
+        if ( err ) {
+            res.json(500, err);
+        } else {
+            var userInfo = userDoc.toJSON();
+            returnUserBabyInfo(req,res,userInfo);
+        }
+    });
+};
+
 exports.logInUser = function(req, res) {
     var query = {
         email: req.body.email
@@ -74,21 +85,25 @@ exports.logInUser = function(req, res) {
                     res.json(401, "Not authorized");
                 } else {
                     var userInfo = document.toJSON();
-                    Baby.findOne({userId: document._id}, function(err, doc) {
-                        if (err) {
-                            console.log(err);
-                            //No baby info found for user yet - not necessarily an error
-                        } else {
-                            //Assign baby info to userInfo.baby
-                            userInfo.baby = doc.toJSON();
-                        }
-                        res.json(userInfo);
-                    });
+                    returnUserBabyInfo(req,res,userInfo);
                 }
             });
         }
     });
 };
+
+function returnUserBabyInfo(req,res,userInfo) {
+    Baby.findOne({userId: userInfo._id}, function(err, doc) {
+        if (err) {
+            console.log(err);
+            //No baby info found for user yet - not necessarily an error
+        } else {
+            //Assign baby info to userInfo.baby
+            userInfo.baby = doc.toJSON();
+        }
+        res.json(userInfo);
+    });
+}
 
 exports.create = function(req,res) {
     console.log("users.create");

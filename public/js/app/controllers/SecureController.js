@@ -6,13 +6,16 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
             },
 
             editPage: function() {
-                App.mainRegion.show(new EditPageView({model:App.babyModel}));
+                if ( this.checkAuthenticated() ) {
+                    App.mainRegion.show(new EditPageView({model:App.babyModel}));
+                }
             },
 
             checkAuthenticated: function() {
                 if ( !App.userModel ) {
                     console.log("Not logged in");
                     window.location = "#logIn";
+                    return false;
                 }
             }
         });

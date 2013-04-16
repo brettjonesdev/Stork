@@ -18,7 +18,7 @@ var shim = {
 };
 
 exports.getByBabyCode = function(req, res) {
-    var babyCode= req.params.babyCode;
+    var babyCode= req.params.code;
     Baby.findOne({babyCode: babyCode}, function(err, doc) {
         if (err) {
             res.json(500, err.message);
@@ -29,7 +29,7 @@ exports.getByBabyCode = function(req, res) {
 };
 
 exports.getByUserId = function(req, res) {
-    var userId= req.params.userId;
+    var userId= req.params.id;
     Baby.findOne({userId: userId}, function(err, doc) {
         if (err) {
             res.json(500, err.message);

@@ -13,13 +13,13 @@ module.exports = function (app) {
 
     app.post("/logIn", users.logInUser);
     app.post("/logOut", users.logOutUser);
-    app.get("/somethingAuthenticated", users.requireAuthentication, users.getBlah);
+    app.get("/userInfo", users.requireAuthentication, users.getUserInfo);
 
     //Open
     app.post("/makeRequest", requests.makeRequest);
     app.get("/baby/:id", baby.getInfo);
     app.get("/babyByCode/:code", baby.getByBabyCode);
-    app.get("/babyByUserId/:code", baby.getByUserId);
+    app.get("/babyByUserId/:id", baby.getByUserId);
     app.get("/statusFeed", baby.getStatusFeed);
     app.get("/comments", baby.getComments);
     console.log("routes configured");

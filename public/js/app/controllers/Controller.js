@@ -35,7 +35,7 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
                 $.post( "/tempAuth", {
                     tempAuthCode: id
                 }).done(function(res) {
-                        window.location = "#editPage/" + res.userId;
+                        window.location = "#editPage";
                     }).fail(function() {
                         App.mainRegion.show(new PlainTextView({
                             cssClass: 'alert alert-error',

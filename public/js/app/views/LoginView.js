@@ -3,6 +3,8 @@ define([ 'App', 'backbone', 'marionette', 'views/base/FormView', 'models/LogInMo
         return FormView.extend({
             template:Handlebars.compile(template),
             model: new LogInModel(),
-            onSaveSuccess: App.logInUser
+            onSaveSuccess: function(model,response) {
+                App.logInUser(response);
+            }
         });
     });

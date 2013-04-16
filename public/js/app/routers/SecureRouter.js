@@ -8,7 +8,8 @@ define(['App', 'marionette', 'controllers/SecureController'],
         },
 
         initialize: function() {
-            this.on("all", this.controller.checkAuthenticated);
+            //todo doing this manually now to allow cancelling of routing.
+            // this.on("all", this.controller.checkAuthenticated);
         }
     });
 });
