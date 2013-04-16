@@ -11,8 +11,19 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
 
         App.vent.on("loggedInUser", function(userModel) {
             this.userModel = userModel;
-            console.log("logged in", userModel);
+            console.log("logged in", userModel.toJSON());
         });
+
+        App.logOutUser = function() {
+            App.userModel = undefined;
+            App.vent.trigger("loggedOutUser");
+            $.post( "/logOut", {}).done(function(res) {
+                    App.success("Logged out");
+                    window.location = "#";
+                }).fail(function() {
+                    App.error( "Unable to log out" );
+                });
+        };
 
         function isMobile() {
             var ua = (navigator.userAgent || navigator.vendor || window.opera);
@@ -22,6 +33,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
         App.mobile = isMobile();
 
         App.addInitializer(function (options) {
+            //TODO pull in user info
             Backbone.history.start();
         });
 

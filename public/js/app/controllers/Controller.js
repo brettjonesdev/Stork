@@ -3,6 +3,13 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
         return Backbone.Marionette.Controller.extend({
             initialize:function (options) {
                 App.headerRegion.show(new HeaderView());
+
+                App.vent.on("loggedInUser", function(model) {
+                    App.headerRegion.show(new HeaderView({model: model}))
+                });
+                App.vent.on("loggedOutUser", function(model) {
+                    App.headerRegion.show(new HeaderView())
+                });
             },
 
             welcome:function () {

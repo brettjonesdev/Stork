@@ -7,7 +7,7 @@ exports.requireAuthentication = function (req, res, next) {
     if (!req.user) {
         res.json(401, "Not logged in");
     } else {
-        //authenticated, pass along to real handler
+        //authenticated, pass along to next handler
         next();
     }
 };
@@ -55,6 +55,11 @@ exports.authorize = function (req, res) {
     });
 };
 
+exports.logOutUser =  function(req, res){
+    req.logout();
+    res.json();
+};
+
 exports.logInUser = function(req, res) {
     var query = {
         email: req.body.email
@@ -68,14 +73,14 @@ exports.logInUser = function(req, res) {
                 if ( err ) {
                     res.json(401, "Not authorized");
                 } else {
-                    var userInfo = document;
+                    var userInfo = document.toJSON();
                     Baby.findOne({userId: document._id}, function(err, doc) {
                         if (err) {
                             console.log(err);
                             //No baby info found for user yet - not necessarily an error
                         } else {
                             //Assign baby info to userInfo.baby
-                            userInfo.baby = doc;
+                            userInfo.baby = doc.toJSON();
                         }
                         res.json(userInfo);
                     });

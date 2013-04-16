@@ -9,9 +9,10 @@ module.exports = function (app) {
     //User
     app.post("/user", users.create);
     app.post("/tempAuth", users.authorize);
-    app.post("/baby", baby.createBaby);
+    app.post("/baby", users.requireAuthentication, baby.createBaby);
 
     app.post("/logIn", users.logInUser);
+    app.post("/logOut", users.logOutUser);
     app.get("/somethingAuthenticated", users.requireAuthentication, users.getBlah);
 
     //Open

@@ -2,7 +2,7 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
     function (App, $, Backbone, Marionette, BabyModel, BabyPageLayout, MakeRequestView, HeaderView, ThankYouForRequestView, WelcomeView, CreateUserView, LoadingView, PlainTextView, UserAccountModel, EditPageView) {
         return Backbone.Marionette.Controller.extend({
             initialize:function (options) {
-                App.headerRegion.show(new HeaderView());
+
             },
 
             editPage: function(userId) {
