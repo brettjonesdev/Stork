@@ -3,7 +3,7 @@
 
     <div class="control-group">
         <label for="babyCode">Create a Baby Code</label>
-        <input type="text" class="input-medium" placeholder="i.e. BabyJohn2013" id="babyCode" name="babyCode"/>
+        <input type="text" class="input-medium" placeholder="i.e. BabyJohn2013" id="babyCode" name="babyCode" value="{{babyCode}}"/>
         <span class="help-inline">Enter a unique code to give to friends and family to access your baby's page</span>
         <span class="help-inline" data-error></span>
     </div>
@@ -11,11 +11,13 @@
     <h2>Baby</h2>
     <label for="babyFirst">Baby Name</label>
     <div class="control-group form-inline">
-        <input type="text" class="input-medium" placeholder="Baby First" id="babyFirst" name="babyFirst" value=""/>
-        <input type="text" class="input-medium" placeholder="Middle" id="babyMiddle" name="babyMiddle" value=""/>
-        <input type="text" class="input-medium" placeholder="Baby Last" id="babyLast" name="babyLast" value=""/>
+        <input type="text" class="input-medium" placeholder="Baby First" id="babyFirst" name="babyFirst" value="{{babyFirst}}"/>
+        <input type="text" class="input-medium" placeholder="Middle" id="babyMiddle" name="babyMiddle" value="{{babyMiddle}}"/>
+        <input type="text" class="input-medium" placeholder="Baby Last" id="babyLast" name="babyLast" value="{{babyLast}}"/>
         <span class="help-inline" data-error></span>
     </div>
+
+    <h2>TODO birthdate and weight</h2>
 
     <h2>Parent(s)</h2>
 
@@ -24,9 +26,9 @@
             <button name="parent1.gender" value="Mother" type="button" class="btn btn-primary active">Mother</button>
             <button name="parent1.gender" value="Father" type="button" class="btn btn-primary">Father</button>
         </div>
-        <input type="text" class="input-medium" placeholder="First" id="parent1.first" name="parent1.first" value=""/>
-        <input type="text" class="input-medium" placeholder="Middle" id="parent1.middle" name="parent1.middle" value=""/>
-        <input type="text" class="input-medium" placeholder="Last" id="parent1.last" name="parent1.last" value=""/>
+        <input type="text" class="input-medium" placeholder="First" id="parent1.first" name="parent1.first" value="{{parent1.first}}"/>
+        <input type="text" class="input-medium" placeholder="Middle" id="parent1.middle" name="parent1.middle" value="{{parent1.middle}}"/>
+        <input type="text" class="input-medium" placeholder="Last" id="parent1.last" name="parent1.last" value="{{parent1.last}}"/>
         <span class="help-inline" data-error></span>
     </div>
 
@@ -36,9 +38,9 @@
             <button name="parent2.gender" value="Father" type="button" class="btn btn-primary active">Father</button>
         </div>
         <span class="muted">(optional)</span>
-        <input type="text" class="input-medium" placeholder="First" id="parent2.first" name="parent2.first" value=""/>
-        <input type="text" class="input-medium" placeholder="Middle" id="parent2.middle" name="parent2.middle" value=""/>
-        <input type="text" class="input-medium" placeholder="Last" id="parent2.last" name="parent2.last" value=""/>
+        <input type="text" class="input-medium" placeholder="First" id="parent2.first" name="parent2.first" value="{{parent2.first}}"/>
+        <input type="text" class="input-medium" placeholder="Middle" id="parent2.middle" name="parent2.middle" value="{{parent2.middle}}"/>
+        <input type="text" class="input-medium" placeholder="Last" id="parent2.last" name="parent2.last" value="{{parent2.last}}"/>
         <span class="help-inline" data-error></span>
     </div>
 

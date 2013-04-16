@@ -17,6 +17,7 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
                     window.location = "#logIn";
                     return false;
                 }
+                return true;
             }
         });
     });

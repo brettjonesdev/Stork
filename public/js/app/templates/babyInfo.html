@@ -5,10 +5,10 @@
         born <strong class="text-info">{{birthDate}}</strong> at <strong class="text-info">{{weight}}</strong> and <strong class="text-info">{{height}}</strong>
         <br/>
         to
-        {{#if fatherFirst}}
-        proud parents <strong class="text-info">{{fatherFirst}} {{fatherLast}}</strong> and <strong class="text-info">{{motherFirst}} {{motherLast}}</strong>
+        {{#if parent2}}
+        proud parents <strong class="text-info">{{parent1.first}} {{parent1.middle}} {{parent1.last}}</strong> and <strong class="text-info">{{parent2.first}} {{parent2.middle}} {{parent2.last}}</strong>
         {{else}}
-        proud mother <strong class="text-info">{{motherFirst}} {{motherLast}}</strong>
+        proud {{parent1.gender}} <strong class="text-info">{{parent1.first}} {{parent1.middle}} {{parent1.last}}</strong>
         {{/if}}
     </p>
 </div>
