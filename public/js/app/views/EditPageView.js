@@ -9,6 +9,11 @@ define([ 'App', 'marionette', 'views/base/FormView', 'models/UserModel', 'models
             },
 
             onRender: function() {
+                this.$('input.date').datepicker({
+                    autoclose:true,
+                    todayHighlight:true
+                });
+
                 this.$(".gender-select button").click(this.inputChanged);
                 this.$(".gender-select button.active").click();
             }

@@ -17,7 +17,14 @@
         <span class="help-inline" data-error></span>
     </div>
 
-    <h2>TODO birthdate and weight</h2>
+    <label for="babyFirst">Birth Date</label>
+    <div class="control-group form-inline">
+        <div class="input-append date datepicker" data-date="{{birthDate}}" data-date-format="dd-mm-yyyy">
+            <input class="date input-small" name="birthDate" size="10" type="text" value="{{birthDate}}">
+            <span class="add-on"><i class="icon-th"></i></span>
+        </div>
+        <span class="help-inline" data-error></span>
+    </div>
 
     <h2>Parent(s)</h2>
 

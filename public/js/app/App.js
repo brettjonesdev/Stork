@@ -13,7 +13,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
             console.log("Logged In!", response);
             App.success("Logged In!");
 
-            var userModel = new UserModel(_.omit(response, 'baby'));
+            var userModel = new UserModel(response);
             var babyModel = new BabyModel(response.baby);
 
             document.cookie = "babyapp-email=" + userModel.get("email");

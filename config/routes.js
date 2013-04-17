@@ -10,6 +10,8 @@ module.exports = function (app) {
     app.post("/user", users.create);
     app.post("/tempAuth", users.authorize);
     app.post("/baby", users.requireAuthentication, baby.createBaby);
+    app.put("/baby/:id", users.requireAuthentication, baby.updateBaby);
+
 
     app.post("/logIn", users.logInUser);
     app.post("/logOut", users.logOutUser);
