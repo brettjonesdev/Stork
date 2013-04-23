@@ -12,6 +12,8 @@ var BabySchema = new Schema({
     weightLb: Number,
     weightOz: Number,
     weightG: Number,
+    lengthIn: Number,
+    lengthCm: Number,
     birthDate: Date,
     birthLocation: String,
     description: String
