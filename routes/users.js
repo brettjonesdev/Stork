@@ -39,12 +39,7 @@ exports.authorize = function (req, res) {
                         if (err) {
                             res.json(401, "Not authorized");
                         } else {
-                            res.json(200,
-                                {
-                                    userId:doc.get("_id"),
-                                    babyCode: doc.get("babyCode")
-                                }
-                            );
+                            res.json(doc.toJSON());
                         }
                     });
 
@@ -97,7 +92,7 @@ function returnUserBabyInfo(req,res,userInfo) {
         if (err) {
             console.log(err);
             //No baby info found for user yet - not necessarily an error
-        } else {
+        } else if ( doc ) {
             //Assign baby info to userInfo.baby
             userInfo.baby = doc.toJSON();
         }

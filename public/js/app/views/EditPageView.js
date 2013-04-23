@@ -3,6 +3,13 @@ define([ 'App', 'marionette', 'views/base/FormView', 'models/UserModel', 'models
         return FormView.extend({
             template:Handlebars.compile(template),
             model: new BabyModel(),
+            initialize: function() {
+                //call init of FormView
+                this.formInit();
+                if ( this.model.isNew() && App.userModel ) {
+                    this.model.set("userId", App.userModel.id);
+                }
+            },
             onSaveSuccess: function(a,b,c) {
                 App.success("Changes Saved!");
                 window.location = "#babyPage/" + this.model.get( "babyCode" );

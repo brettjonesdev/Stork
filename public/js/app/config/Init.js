@@ -9,7 +9,7 @@ require.config({
         "underscore":"../libs/lodash",
         "backbone":"../libs/backbone",
         "marionette":"../libs/backbone.marionette",
-        "handlebars":"../libs/handlebars",
+        "handlebars":"../libs/handlebars-loader",
         "moment":"../libs/moment.min",
         "alertify":"../libs/alertify.min",
 

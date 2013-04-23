@@ -54,7 +54,7 @@ exports.getInfo = function (req, res) {
 
 function upsertBaby(req,res) {
     var contact = new Baby(req.body);
-    contact.birthDate = new mongoose.Schema.Date(req.body.birthDate);
+    contact.birthDate = new mongoose.Schema.Types.Date(req.body.birthDate);
     var upsertData = contact.toObject();
 
     delete upsertData._id;
@@ -63,10 +63,10 @@ function upsertBaby(req,res) {
         if (err) {
             res.json(500, err.message);
         } else {
-            res.json(200, doc);
+            res.json(200, {succes: true});
         }
     });
-};
+}
 
 
 exports.updateBaby = function(req,res) {
