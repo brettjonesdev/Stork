@@ -1,20 +1,23 @@
 var mongoose = require("mongoose");
-var environment = process.env.NODE_ENV || 'dev';
-var config = require('./config')[environment];
 
-if(process.env.VCAP_SERVICES){
-    var env = JSON.parse(process.env.VCAP_SERVICES);
-    var mongoConfig = env['mongodb-1.8'][0]['credentials'];
+var mongoConfig = {
+    "hostname":"localhost",
+    "port":27017,
+    "username":"",
+    "password":"",
+    "db":"dev"
+};
+
+if ( process.env.MONGO_HOST ) {
+   mongoConfig = {
+       "hostname": process.env.MONGO_HOST,
+       "port":process.env.MONGO_PORT,
+       "username":process.env.MONGO_USER,
+       "password":process.env.MONGO_PASSWORD,
+       "db":process.env.MONGO_DATABASE
+   }
 }
-else{
-    mongoConfig = {
-        "hostname":"localhost",
-        "port":27017,
-        "username":config.username,
-        "password":config.password,
-        "db":config.db
-    }
-}
+
 console.log("mongoConfig", mongoConfig);
 
 var generate_mongo_url = function(obj){

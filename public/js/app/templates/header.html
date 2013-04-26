@@ -2,7 +2,7 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="#">Baby Calling</a>
+            <a class="brand" href="#">Stork</a>
             <ul class="nav">
                 <li><a href="#babyPage/{{baby.babyCode}}">Home</a></li>
             </ul>
@@ -21,9 +21,18 @@
     </div>
 </div>
 {{else}}
-<div class="page-header">
-    <h1>
-        <a href="#" style="color: #333">Baby Calling <small>share your bundle of joy with friends and family</small></a>
-    </h1>
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#">Stork</a>
+            <ul class="nav">
+                <li><a href="#babyPage/{{baby.babyCode}}">Home</a></li>
+            </ul>
+
+            <ul class="nav pull-right">
+                <li><a href="#logIn">Log In</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 {{/if}}

@@ -137,3 +137,26 @@
         column-count:         1;
     }
 }
+
+
+/*welcome.html*/
+
+.masthead {
+    background: url(https://lh6.googleusercontent.com/--S7OiP4gwIA/UXmmxa8qZCI/AAAAAAAABpw/j8cnerZP_ls/w111-h326/repeat-background.png) left bottom repeat-x;
+    margin-bottom: 50px;
+}
+.masthead .hero-unit {
+    background-color: transparent;
+    height: 100%;
+    margin-bottom: 0;
+}
+
+@media (min-width:950px) {
+    .masthead .hero-unit {
+        background: url(https://lh3.googleusercontent.com/-3hi0tTTJE6M/UXmmxaquvdI/AAAAAAAABp0/xj5hng1Jmck/w450-h325/stork-2.jpg) right bottom no-repeat;
+    }
+}
+
+.navbar-inverse, .navbar-inverse .navbar-inner, .navbar-inverse .navbar-inner .container {
+    background-color: #398C94;
+}
