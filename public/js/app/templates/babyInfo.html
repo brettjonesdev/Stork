@@ -1,14 +1,20 @@
 <div class="hero-unit {{gender}}">
-    <h1><small class="muted">introducing </small> <span class="">{{babyFirst}} {{babyMiddle}} {{babyLast}}</span></h1>
-
-    <p class="muted">
-        born <strong class="text-info">{{prettyDate birthDate}}</strong> at <strong class="lead text-info">{{weightLb}} lbs, {{weightOz}} oz</strong> and <strong class="lead text-info">{{lengthIn}} inches</strong>
-        <br/>
-        to
+    <h3>
+        Introducing...
+    </h3>
+    <h1>
+        {{babyFirst}} {{babyMiddle}} {{babyLast}}
+    </h1>
+    <p>
+        Born {{prettyDate birthDate}}
+        <br>
+        Weighing {{weightLb}} lbs, {{weightOz}} oz and {{lengthIn}} inches long
+        <br>
         {{#if parent2}}
-        proud parents <strong class="text-info">{{parent1.first}} {{parent1.middle}} {{parent1.last}}</strong> and <strong class="text-info">{{parent2.first}} {{parent2.middle}} {{parent2.last}}</strong>
+        Proud parents <strong class="text-info">{{parent1.first}} {{parent1.middle}} {{parent1.last}}</strong> and <strong class="text-info">{{parent2.first}} {{parent2.middle}} {{parent2.last}}</strong>
         {{else}}
-        proud {{parent1.gender}} <strong class="text-info">{{parent1.first}} {{parent1.middle}} {{parent1.last}}</strong>
+        Proud {{parent1.gender}} <strong class="text-info">{{parent1.first}} {{parent1.middle}} {{parent1.last}}</strong>
         {{/if}}
+        <br>
     </p>
 </div>

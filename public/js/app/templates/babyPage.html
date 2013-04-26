@@ -1,13 +1,39 @@
-<div id="babyInfoRegion"></div>
-
-{{#if acceptingVisits}}
-<div class="span4 text-center">
-    <h2>Find a time to visit baby {{first}}!</h2>
-    <a href="#makeRequest/{{_id}}" class="btn btn-primary btn-large">Request a Visit</a>
+<div class="row-fluid">
+    <!--/span-->
+    <div id="babyInfoRegion" class="span12"></div>
 </div>
-<div id="statusFeedRegion" class="span4"></div>
-<div id="commentsRegion" class="span4"></div>
-{{else}}
-<div id="statusFeedRegion" class="span6"></div>
-<div id="commentsRegion" class="span6"></div>
-{{/if}}
+<div class="row-fluid">
+    <div class="span8">
+        <div class="photo-gallery">
+            <a href=""><img src="https://sphotos-b.xx.fbcdn.net/hphotos-ash4/298042_4646293765609_500198677_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-a.xx.fbcdn.net/hphotos-ash3/601164_4517136896768_591451643_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-a.xx.fbcdn.net/hphotos-ash4/408984_4512702185903_667219721_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-a.xx.fbcdn.net/hphotos-snc6/261387_4501323381440_534579824_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-b.xx.fbcdn.net/hphotos-snc7/295553_545100195521477_2018913544_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-a.xx.fbcdn.net/hphotos-frc1/409195_545096385521858_1575433826_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-a.xx.fbcdn.net/hphotos-prn1/74489_4485355662257_2045384926_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-a.xx.fbcdn.net/hphotos-frc1/733856_4485355502253_531950678_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-b.xx.fbcdn.net/hphotos-prn1/734099_4485303700958_298297270_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-b.xx.fbcdn.net/hphotos-ash3/524952_4485303580955_780175038_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-b.xx.fbcdn.net/hphotos-prn1/74398_4485303020941_571559392_n.jpg" class="img-rounded" alt="picture"></a>
+            <a href=""><img src="https://sphotos-b.xx.fbcdn.net/hphotos-ash3/625421_543594695672027_1068542216_n.jpg" class="img-rounded" alt="picture"></a>
+        </div>
+    </div>
+    <div id="statusFeedRegion"></div>
+</div>
+<div class="row-fluid">
+    <div id="commentsRegion" class="span6"></div>
+    <div class="span6 visit-box visit-box-Boy">
+        <h2 class="text-center">
+            Visit
+        </h2>
+        <p>
+            Visiting hours have not been set up yet. Please request a few times that
+            work for you, and we will get back with you!
+        </p>
+        <p class="text-center">
+            <a class="btn btn-success" href="#makeRequest">Schedule a Visit</a>
+        </p>
+    </div>
+</div>
+<!--/row-->
