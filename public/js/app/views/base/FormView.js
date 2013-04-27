@@ -11,7 +11,8 @@ define(["App", "jquery", "underscore", "marionette", "handlebars", "util/ViewVal
             },
 
             events:{
-                "change form input":"inputChanged"
+                "change form input":"inputChanged",
+                "change form select":"inputChanged"
             },
 
             //use bind/on_render not onRender so that implementing Views can use onRender without overriding this
@@ -19,6 +20,7 @@ define(["App", "jquery", "underscore", "marionette", "handlebars", "util/ViewVal
                 //use jQuery to bind to form submit, since using events hash is flaky sometimes across browsers
                 this.$("form").submit(this.trySubmit);
                 ViewValidator.bindView(this);
+                this.$("select").click(this.inputChanged).click();
             },
 
             inputChanged:function (event) {

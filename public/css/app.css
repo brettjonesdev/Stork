@@ -5,7 +5,16 @@
 @import url("alertify.core.css");
 @import url("alertify.bootstrap.css");
 
+/* Make alertify a bit more obtrusive, move to bottom left*/
+.alertify-logs {
+    left: 15px;
+    bottom: 20px;
+}
 
+.alertify-log {
+    padding: 14px;
+    font-size: 1.2em;
+}
 
 @media (max-width:400px) {
     .hero-unit {

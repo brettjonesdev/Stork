@@ -4,6 +4,7 @@ var Schema  = mongoose.Schema;
 var BabySchema = new Schema({
     userId: {type: Schema.Types.ObjectId, required: true},
     babyCode:{ type:String, unique: true, required: true },
+    gender: String,
     parent1: {first: String, middle: String, last: String, gender: String},
     parent2: {first: String, middle: String, last: String, gender: String},
     babyFirst: String,

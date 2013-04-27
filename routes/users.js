@@ -124,6 +124,7 @@ exports.create = function(req,res) {
                 body: getConfirmationEmailBody(tempAuthCode),
                 callback: function(err, message) {
                     if (err) {
+                        console.log("Unable to send email", err,message);
                         res.json(500, "Unable to send email: " + message);
                     } else {
                         res.json({success: true});

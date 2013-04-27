@@ -32,6 +32,6 @@
         "passport": "latest",
         "passport-local": "latest"
     },
-    "main":"./server/server",
+    "main":"./app",
     "keywords":["Marionette.js", "Backbone.js", "Require.js", "Marionette and Require Boilerplate Lite"]
 }
