@@ -4,6 +4,7 @@
 @import url("commonstyles.css");
 @import url("alertify.core.css");
 @import url("alertify.bootstrap.css");
+@import url("font-awesome.css");
 
 /* Make alertify a bit more obtrusive, move to bottom left*/
 .alertify-logs {
