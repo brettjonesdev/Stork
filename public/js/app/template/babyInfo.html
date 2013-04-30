@@ -1,0 +1,20 @@
+<div class="hero-unit {{gender}}">
+    <h3>
+        Introducing...
+    </h3>
+    <h1>
+        {{babyFirst}} {{babyMiddle}} {{babyLast}}
+    </h1>
+    <p>
+        Born {{prettyDate birthDate}}
+        <br>
+        Weighing {{weightLb}} lbs, {{weightOz}} oz and {{lengthIn}} inches long
+        <br>
+        {{#if parent2}}
+        Proud parents <strong class="text-info">{{parent1.first}} {{parent1.middle}} {{parent1.last}}</strong> and <strong class="text-info">{{parent2.first}} {{parent2.middle}} {{parent2.last}}</strong>
+        {{else}}
+        Proud {{parent1.gender}} <strong class="text-info">{{parent1.first}} {{parent1.middle}} {{parent1.last}}</strong>
+        {{/if}}
+        <br>
+    </p>
+</div>

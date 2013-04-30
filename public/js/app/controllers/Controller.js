@@ -5,10 +5,10 @@ define(['App', 'jquery', 'backbone', 'marionette', 'models/BabyModel', 'views/Ba
                 App.headerRegion.show(new HeaderView());
 
                 App.vent.on("loggedInUser", function(model) {
-                    App.headerRegion.show(new HeaderView({model: model}))
+                    App.headerRegion.show(new HeaderView({model: model}));
                 });
                 App.vent.on("loggedOutUser", function() {
-                    App.headerRegion.show(new HeaderView())
+                    App.headerRegion.show(new HeaderView());
                 });
             },
 

@@ -1,7 +1,7 @@
-define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'collections/StatusCollection', 'collections/CommentsCollection', 'text!templates/babyPage.html', 'views/BabyInfoView', 'views/StatusFeedView', 'views/CommentsView', 'views/LoadingView'],
+define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'collections/StatusCollection', 'collections/CommentsCollection', 'hbs!template/babyPage', 'views/BabyInfoView', 'views/StatusFeedView', 'views/CommentsView', 'views/LoadingView'],
     function (App, Marionette, _, Handlebars, BabyModel, StatusCollection, CommentsCollection, template, BabyInfoView, StatusFeedView, CommentsView, LoadingView) {
         return Marionette.Layout.extend({
-            template:Handlebars.compile(template),
+            template:template,
             regions:{
                 babyInfoRegion:"#babyInfoRegion",
                 statusFeedRegion:"#statusFeedRegion",

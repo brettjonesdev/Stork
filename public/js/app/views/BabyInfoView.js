@@ -1,7 +1,7 @@
-define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'text!templates/babyInfo.html'],
+define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'hbs!template/babyInfo'],
     function (App, Marionette, _, Handlebars, BabyModel, template) {
         return Marionette.ItemView.extend({
-            template:Handlebars.compile(template),
+            template:template,
             model: new BabyModel()
         });
     });

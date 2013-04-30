@@ -1,7 +1,7 @@
-define([ 'App', 'marionette', 'views/base/FormView', 'models/UserModel', 'models/BabyModel', 'handlebars', 'text!templates/editPage.html'],
+define([ 'App', 'marionette', 'views/base/FormView', 'models/UserModel', 'models/BabyModel', 'handlebars', 'hbs!template/editPage'],
     function (App, Marionette,  FormView, UserModel, BabyModel, Handlebars, template) {
         return FormView.extend({
-            template:Handlebars.compile(template),
+            template:template,
             model: new BabyModel(),
             initialize: function() {
                 //call init of FormView

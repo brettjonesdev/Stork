@@ -1,6 +1,6 @@
-define([ 'marionette', 'handlebars', 'text!templates/thankYouForRequest.html'],
+define([ 'marionette', 'handlebars', 'hbs!template/thankYouForRequest'],
     function (Marionette, Handlebars, template) {
         return Marionette.ItemView.extend({
-            template:Handlebars.compile(template)
+            template:template
         });
     });

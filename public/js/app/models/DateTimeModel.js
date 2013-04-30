@@ -28,7 +28,7 @@ define(["backbone", "underscore", "moment", "backbone-validation" ],
             },
 
             validateTo: function(toValue, attr, computedState) {
-                var error = undefined;
+                var error;
                 var arbitraryDate = "01/01/2013 ";
                 var fromValue = this.get("from");
                 var fromDate = moment(arbitraryDate + fromValue);

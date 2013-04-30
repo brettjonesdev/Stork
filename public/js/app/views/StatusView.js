@@ -1,7 +1,7 @@
-define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/StatusModel', 'text!templates/status.html'],
+define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/StatusModel', 'hbs!template/status'],
     function (App, Marionette, _, Handlebars, StatusModel, template) {
         return Marionette.Layout.extend({
-            template:Handlebars.compile(template),
+            template:template,
             model:new StatusModel()
         });
     });

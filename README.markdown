@@ -128,7 +128,7 @@ WelcomeView.js
 define(['underscore', 'jquery', 'handlebars', 'text!templates/header.html'],
     function (_, $, Handlebars, template) {
         return Backbone.Marionette.ItemView.extend({
-            template:Handlebars.compile(template)
+            template:template
         });
     });
 

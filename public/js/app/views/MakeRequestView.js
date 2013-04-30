@@ -1,7 +1,7 @@
-define([ 'App', 'backbone', 'marionette', 'handlebars', 'views/DateTimeView', 'models/RequestModel', 'models/DateTimeModel', 'text!templates/makeRequest.html', 'util/ViewValidator'],
+define([ 'App', 'backbone', 'marionette', 'handlebars', 'views/DateTimeView', 'models/RequestModel', 'models/DateTimeModel', 'hbs!template/makeRequest', 'util/ViewValidator'],
     function (App, Backbone, Marionette, Handlebars, DateTimeView, RequestModel, DateTimeModel, template, ViewValidator) {
         return Marionette.CompositeView.extend({
-            template:Handlebars.compile(template),
+            template:template,
             model:new RequestModel(),
             collection:new Backbone.Collection([],{
                 model:DateTimeModel

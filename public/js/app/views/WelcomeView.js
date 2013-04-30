@@ -1,7 +1,7 @@
-define([ 'marionette', 'underscore', 'handlebars', 'text!templates/welcome.html', 'views/LoginView'],
+define([ 'marionette', 'underscore', 'handlebars', 'hbs!template/welcome', 'views/LoginView'],
     function (Marionette, _, Handlebars, template, LoginView) {
         return Marionette.Layout.extend({
-            template:Handlebars.compile(template),
+            template:template,
             regions: {
                 "logInRegion":"#logIn"
             },

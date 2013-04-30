@@ -1,8 +1,8 @@
-define( [ 'App', 'underscore', 'marionette', 'handlebars', 'models/DateTimeModel', 'text!templates/dateTime.html', 'util/ViewValidator', 'bootstrap', 'bootstrap-timepicker', 'bootstrap-datepicker'],
+define( [ 'App', 'underscore', 'marionette', 'handlebars', 'models/DateTimeModel', 'hbs!template/dateTime', 'util/ViewValidator', 'bootstrap', 'bootstrap-timepicker', 'bootstrap-datepicker'],
     function( App, _, Marionette, Handlebars, DateTimeModel, template, ViewValidator) {
         //ItemView provides some default rendering logic
         return Marionette.ItemView.extend( {
-            template: Handlebars.compile(template),
+            template: template,
             model: new DateTimeModel(),
 
             initialize: function() {

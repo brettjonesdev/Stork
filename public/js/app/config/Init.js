@@ -12,6 +12,9 @@ require.config({
         "handlebars":"../libs/handlebars-loader",
         "moment":"../libs/moment.min",
         "alertify":"../libs/alertify.min",
+        "hbs":"../libs/hbs",
+        "i18nprecompile":"../libs/i18nprecompile",
+        "json2":"../libs/json2",
 
         // Plugins
         "backbone-validateAll":"../libs/plugins/backbone.validateAll",
@@ -44,6 +47,27 @@ require.config({
         "handlebars":{
             "exports":"Handlebars"
         }
+    },
+    // hbs config
+    hbs: {
+        disableI18n: false,        // This disables the i18n helper and
+        // doesn't require the json i18n files (e.g. en_us.json)
+        // (false by default)
+
+        disableHelpers: false,     // When true, won't look for and try to automatically load
+        // helpers (false by default)
+
+/*
+        helperPathCallback:       // Callback to determine the path to look for helpers
+            function (name) {       // ('/template/helpers/'+name by default)
+                return 'cs!' + name;
+            },
+*/
+
+        templateExtension: "html", // Set the extension automatically appended to templates
+        // ('hbs' by default)
+
+        compileOptions: {}        // options object which is passed to Handlebars compiler
     }
 });
 

@@ -1,5 +1,5 @@
 {
-    "name":"MRB-Lite",
+    "name":"Stork",
     "title":"Marionette and Require Boilerplate Lite",
     "description":"",
     "version":"1.0.0",
@@ -22,6 +22,13 @@
             "url":"https://github.com/brettjonesdev/MRB-Lite/blob/master/LICENSE-MIT"
         }
     ],
+    "devDependencies":{
+        "express":"3.x",
+        "grunt":"~0.4.1",
+        "grunt-contrib-requirejs":"~0.4.0",
+        "grunt-contrib-jshint":"~0.3.0",
+        "uglify-js":"~2.2.5"
+    },
     "dependencies":{
         "express":"3.x",
         "underscore":"1.4.2",
@@ -33,5 +40,5 @@
         "passport-local": "latest"
     },
     "main":"./app",
-    "keywords":["Marionette.js", "Backbone.js", "Require.js", "Marionette and Require Boilerplate Lite"]
+    "keywords":["Stork"]
 }

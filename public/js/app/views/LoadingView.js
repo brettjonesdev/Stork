@@ -1,7 +1,7 @@
-define(['backbone', 'marionette', 'jquery', 'handlebars', 'text!templates/loading.html'],
+define(['backbone', 'marionette', 'jquery', 'handlebars', 'hbs!template/loading'],
     function (Backbone, Marionette, $, Handlebars, template) {
         return Marionette.ItemView.extend({
-            template:Handlebars.compile(template),
+            template:template,
             loadTime:1000,
             stepCount:10,
             initialize:function (options) {
@@ -24,7 +24,7 @@ define(['backbone', 'marionette', 'jquery', 'handlebars', 'text!templates/loadin
                         view.$(".bar").css("width", stepCount * (100 / view.stepCount) + "%");
                     }
                     stepCount++;
-                }, this.loadTime / this.stepCount)
+                }, this.loadTime / this.stepCount);
             }
         });
     });
