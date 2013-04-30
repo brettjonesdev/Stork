@@ -120,7 +120,7 @@ exports.create = function(req,res) {
 
             email.sendEmail({
                 to: user.email,
-                subject: "Welcome to Baby Page!",
+                subject: "Welcome to Stork!",
                 body: getConfirmationEmailBody(tempAuthCode),
                 callback: function(err, message) {
                     if (err) {
@@ -139,7 +139,7 @@ function getConfirmationEmailBody(tempAuthCode) {
     var host = (process.env.VCAP_APP_HOST || 'localhost');
     var port = (process.env.VMC_APP_PORT || 3000);
 
-    return "<h2>Welcome to Baby Page!</h2>" +
+    return "<h2>Welcome to Stork!</h2>" +
         "<h4>Click on the link below to finish creating your account and begin sharing your baby with friends and family!</h4>" +
         "<br/><a href='http://" + host + (port != 80 ? ":" + port : "" ) + "#verify/" + tempAuthCode + "'>Register your account</a>";
 
