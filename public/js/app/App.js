@@ -16,7 +16,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
             var userModel = new UserModel(response);
             var babyModel = new BabyModel(response.baby);
 
-            document.cookie = "babyapp-email=" + userModel.get("email");
+            document.cookie = "stork-email=" + userModel.get("email");
             this.userModel = userModel;
             this.babyModel = babyModel;
 
@@ -31,7 +31,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
             App.userModel = undefined;
             App.babyModel = undefined;
             App.vent.trigger("loggedOutUser");
-            document.cookie = "";
+            document.cookie = "stork-email=";
             $.post( "/logOut", {}).done(function(res) {
                     App.success("Logged out");
                     window.location = "#";

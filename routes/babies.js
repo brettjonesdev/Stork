@@ -2,22 +2,6 @@ var _ = require("underscore");
 var mongoose = require('mongoose');
 var Baby = require("../models/Baby");
 
-var shim = {
-    _id: "abc123",
-    userId: "abc123xyz456",
-    babyFirst: "Carter",
-    babyMiddle: "Chatman",
-    babyLast: "Jones",
-    gender: "male",
-    fatherFirst: "Brett",
-    fatherLast: "Jones",
-    motherFirst: "Kimberley",
-    motherLast: "Jones",
-    birthDate: "February 24, 2013",
-    weight: "7 lbs, 11 oz",
-    height: "19 in"
-};
-
 exports.getByBabyCode = function(req, res) {
     var babyCode= req.params.code;
     Baby.findOne({babyCode: babyCode}, function(err, doc) {

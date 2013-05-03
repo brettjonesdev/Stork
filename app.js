@@ -25,7 +25,8 @@ app.configure(function () {
 
     // express/mongo session storage
     app.use(express.session({
-        secret: 'noobjs',
+        secret: 'stork',
+        maxAge: new Date(Date.now() + 3600000),
         store: new mongoStore({
             url: mongo.mongoUrl,
             collection : 'sessions'

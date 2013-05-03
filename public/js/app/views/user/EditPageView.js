@@ -1,4 +1,4 @@
-define([ 'App', 'marionette', 'views/base/FormView', 'models/UserModel', 'models/BabyModel', 'handlebars', 'hbs!template/editPage'],
+define([ 'App', 'marionette', 'views/base/FormView', 'models/UserModel', 'models/BabyModel', 'handlebars', 'hbs!template/user/editPage'],
     function (App, Marionette,  FormView, UserModel, BabyModel, Handlebars, template) {
         return FormView.extend({
             template:template,
