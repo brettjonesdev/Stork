@@ -31,7 +31,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
             App.userModel = undefined;
             App.babyModel = undefined;
             App.vent.trigger("loggedOutUser");
-            document.cookie = "stork-email=";
+            deleteCookie("stork-email");
             $.post( "/logOut", {}).done(function(res) {
                     App.success("Logged out");
                     window.location = "#";
@@ -48,7 +48,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
         App.mobile = isMobile();
 
         App.addInitializer(function (options) {
-            if ( document.cookie.indexOf("babyapp-email") > -1 ) {
+            if ( document.cookie.indexOf("stork-email") > -1 ) {
                 //get user Info if logged in
                 $.get("/userInfo").done(function(res) {
                     console.log(res);
@@ -63,6 +63,10 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'alertif
                 Backbone.history.start();
             }
         });
+
+        function deleteCookie(name) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
 
         App.modelError = function(model, res, options) {
             var message = res.responseText;

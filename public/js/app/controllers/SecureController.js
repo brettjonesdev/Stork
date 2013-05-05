@@ -2,7 +2,8 @@ define(['App', 'jquery', 'backbone', 'marionette', 'views/user/EditPageView', 'v
     function (App, $, Backbone, Marionette, EditPageView, HomePageLayout) {
         return Backbone.Marionette.Controller.extend({
             initialize:function (options) {
-                if ( this.checkAuthenticated() ) {
+                var skipRedirect = true;
+                if ( this.checkAuthenticated(true) ) {
                     App.mainRegion.show(new HomePageLayout({model:App.babyModel}));
                 }
             },
@@ -19,10 +20,12 @@ define(['App', 'jquery', 'backbone', 'marionette', 'views/user/EditPageView', 'v
                 }
             },
 
-            checkAuthenticated: function() {
+            checkAuthenticated: function(skipRedirect) {
                 if ( !App.userModel ) {
                     console.log("Not logged in");
-                    window.location = "#logIn";
+                    if(!skipRedirect) {
+                        window.location = "#logIn";
+                    }
                     return false;
                 }
                 return true;

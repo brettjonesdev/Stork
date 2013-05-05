@@ -2,7 +2,7 @@ var requests = require('../routes/rsvpRequests');
 var baby = require('../routes/babies');
 var users = require('../routes/users');
 var passport = require("passport");
-
+var news = require("../routes/news");
 
 module.exports = function (app) {
     console.log("configuring routes");
@@ -11,7 +11,7 @@ module.exports = function (app) {
     app.post("/tempAuth", users.authorize);
     app.post("/baby", users.requireAuthentication, baby.createBaby);
     app.put("/baby/:id", users.requireAuthentication, baby.updateBaby);
-
+    app.post("/status", users.requireAuthentication, news.updateStatus);
 
     app.post("/logIn", users.logInUser);
     app.post("/logOut", users.logOutUser);
@@ -24,5 +24,7 @@ module.exports = function (app) {
     app.get("/babyByUserId/:id", baby.getByUserId);
     app.get("/statusFeed", baby.getStatusFeed);
     app.get("/comments", baby.getComments);
+    app.get("/newsItems", news.getNewsItems);
+
     console.log("routes configured");
 };

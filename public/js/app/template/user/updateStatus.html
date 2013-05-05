@@ -1,7 +1,27 @@
-<form class="form">
-    <label for="message">Status: </label>
-    <input type="text" name="message" id="message" placeholder="Share what's going on"/>
-    <label for="milestone">Milestone</label>
-    <input type="checkbox" name="milestone" id="milestone"/>
-    <input type="submit" value="Share"/>
+<form class="form-inline">
+    <div class="control-group">
+        <div class="controls">
+            <div class="input-append">
+                <input type="text" id="message" name="message" placeholder="What's going on?">
+                <button type="submit" class="btn btn-primary">
+                    Share
+                    <i class="icon-share-alt icon-white"></i>
+                </button>
+            </div>
+            <div>
+                <label for="milestone" class="checkbox">
+                    <input type="checkbox" id="milestone" name="milestone">
+                    Milestone
+                </label>
+                <label for="sms" class="checkbox">
+                    <input type="checkbox" id="sms" name="sms">
+                    Send SMS
+                </label>
+                <label for="private" class="private">
+                    <input type="checkbox" id="private" name="private">
+                    Private
+                </label>
+            </div>
+        </div>
+    </div>
 </form>

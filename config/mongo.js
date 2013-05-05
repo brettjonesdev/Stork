@@ -1,4 +1,6 @@
 var mongoose = require("mongoose");
+var mongooseTypes = require("mongoose-3x-types");
+mongooseTypes.loadTypes(mongoose);
 
 var mongoUrl = process.env.MONGO_URL;
 if ( !mongoUrl ) {

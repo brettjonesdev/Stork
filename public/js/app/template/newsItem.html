@@ -1,0 +1,26 @@
+<div class="row-fluid">
+    <div class="pull-left status well">
+
+        {{#if status}}
+        <blockquote>
+            <p>
+                {{message}}
+            </p>
+            <small>
+                {{fromNow createdAt}}
+            </small>
+        </blockquote>
+        {{else}} {{!comment}}
+
+            <blockquote>
+                <p>
+                    {{message}}
+                </p>
+                <small class="pull-right">
+                    <a class="from" href="{{fromEmail}}">{{from}} </a>
+                    {{fromNow createdAt}}
+                </small>
+            </blockquote>
+        {{/if}}
+    </div>
+</div>

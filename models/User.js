@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var ObjectID = require('mongodb').ObjectID;
+var mongooseTypes = require("mongoose-3x-types");
+var useTimestamps = mongooseTypes.useTimestamps;
 
 var UserSchema = new mongoose.Schema({
-    email: { type:String, unique: true },
+    email: { type:mongoose.Schema.Types.Email, unique: true, required: true },
     active: Boolean,
     tempAuthCode: String,
     hashedPassword: String
@@ -17,6 +19,9 @@ var UserSchema = new mongoose.Schema({
  })
  .get(function() { return this._password });
 
+UserSchema.plugin(useTimestamps);
+
+UserSchema.index({email: 1});
 
 //instance methods
 UserSchema.methods = {

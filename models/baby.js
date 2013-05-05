@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
 var Schema  = mongoose.Schema;
+var mongooseTypes = require("mongoose-3x-types");
+var useTimestamps = mongooseTypes.useTimestamps;
 
 var BabySchema = new Schema({
     userId: {type: Schema.Types.ObjectId, required: true},
@@ -19,6 +21,8 @@ var BabySchema = new Schema({
     birthLocation: String,
     description: String
 });
+
+BabySchema.plugin(useTimestamps);
 
 var Baby = mongoose.model("Baby", BabySchema);
 

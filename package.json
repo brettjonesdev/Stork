@@ -36,6 +36,7 @@
         "mongodb":"*",
         "connect-mongo": "latest",
         "mongoose":"3.6.0",
+        "mongoose-3x-types":"1.0.5",
         "passport": "latest",
         "passport-local": "latest"
     },

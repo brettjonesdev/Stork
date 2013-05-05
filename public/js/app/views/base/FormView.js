@@ -47,11 +47,16 @@ define(["App", "jquery", "underscore", "marionette", "handlebars", "util/ViewVal
 
             save:function () {
                 console.log("Saving:", this.model.toJSON());
-                this.model.save(this.model.toJSON(),
+                this.model.save(this.prepareSaveData(),
                     {
                         success:this.onSaveSuccess,
                         error:this.onSaveError
                     });
+            },
+
+            //override these methods as needed
+            prepareSaveData:function() {
+                return this.model.toJSON();
             },
 
             onSaveSuccess:function () {
