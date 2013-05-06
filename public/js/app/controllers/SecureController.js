@@ -20,6 +20,10 @@ define(['App', 'jquery', 'backbone', 'marionette', 'views/user/EditPageView', 'v
                 }
             },
 
+            preview: function() {
+                //TODO figure out how to show different views within HomePageLayout while maintaining loose coupling.
+            },
+
             checkAuthenticated: function(skipRedirect) {
                 if ( !App.userModel ) {
                     console.log("Not logged in");

@@ -1,17 +1,18 @@
 <div class="row-fluid">
-    <div class="pull-left status well">
-
         {{#if status}}
-        <blockquote>
-            <p>
-                {{message}}
-            </p>
-            <small>
-                {{fromNow createdAt}}
-            </small>
-        </blockquote>
-        {{else}} {{!comment}}
-
+        <div class="pull-left status">
+            <blockquote>
+                <p>
+                    {{message}}
+                </p>
+                <small class="pull-left">
+                    {{fromNow createdAt}}
+                </small>
+            </blockquote>
+         </div>
+        {{/if}}
+        {{#if comment}}
+        <div class="comment">
             <blockquote>
                 <p>
                     {{message}}
@@ -21,6 +22,6 @@
                     {{fromNow createdAt}}
                 </small>
             </blockquote>
+        </div>
         {{/if}}
-    </div>
 </div>

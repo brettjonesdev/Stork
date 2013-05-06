@@ -30,49 +30,6 @@
     }
 }
 
-.status .status-info {
-    font-size: .9em;
-    color: #ccc;
-    margin-left: 5px;
-}
-
-.status {
-    margin: 10px 10px 30px 10px;
-}
-
-.status-major {
-    margin: 20px 10px 40px 10px;
-
-}
-
-.status .message {
-    font-size: 1.2em;
-}
-
-.status-major .message {
-
-    font-size: 1.8em;
-    font-style: italic;
-}
-
-.comment .comment-info {
-    font-size: .8em;
-    color: #ccc;
-    margin-left: 5px;
-}
-
-.comment {
-    margin: 10px 10px 30px 10px;
-}
-
-.comment .message {
-    font-size: 1.1em;
-}
-
-.comment .commenter {
-
-}
-
 @media (min-width:800px) {
     .Boy {
         background: url(https://lh3.googleusercontent.com/-PUCf5BA3VrY/UXmWO2Yu_bI/AAAAAAAABpI/D6AMMdza81E/w497-h373/stock-vector-baby1.jpg) right no-repeat #AEDFE4;
@@ -82,21 +39,6 @@
 .Boy {
     background-color:  #AEDFE4;
 }
-
-
-/*
-.status-box-Boy {
-    background-color: #AEDFE4;
-}
-
-.comment-box-Boy {
-    background-color: #B7AFA3;
-}
-
-.visit-box-Boy {
-    background-color: #E8D0A9;
-}
-*/
 
 /*photo masonry*/
 .photo-gallery {
@@ -148,9 +90,7 @@
     }
 }
 
-
 /*welcome.html*/
-
 .masthead {
     background: url(https://lh6.googleusercontent.com/--S7OiP4gwIA/UXmmxa8qZCI/AAAAAAAABpw/j8cnerZP_ls/w111-h326/repeat-background.png) left bottom repeat-x;
     margin-bottom: 50px;
@@ -170,3 +110,13 @@
 .navbar-inverse, .navbar-inverse .navbar-inner, .navbar-inverse .navbar-inner .container {
     background-color: #398C94;
 }
+
+.status blockquote p{
+    font-size: 1.4em;
+    font-style: italic;
+}
+
+.comment {
+
+}
+

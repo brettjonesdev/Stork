@@ -58,14 +58,14 @@ function sendMashedUpResponse(req,res,statuses,comments) {
 }
 
 function addStatusToCollection(status, array) {
-    var statusItem = _.extend({}, status);
+    var statusItem = _.extend({}, status.toJSON());
     statusItem.status = true;
     statusItem.comment = false;
     array.push(statusItem);
 }
 
 function addCommentToCollection(comment, array) {
-    var commentItem = _.extend({}, comment);
+    var commentItem = _.extend({}, comment.toJSON());
     commentItem.status = false;
     commentItem.comment = true;
     array.push(commentItem);

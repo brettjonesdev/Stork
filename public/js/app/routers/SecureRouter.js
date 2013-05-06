@@ -5,7 +5,16 @@ define(['App', 'marionette', 'controllers/SecureController'],
         //Routes for authenticated user
         appRoutes:{
             "editPage":"editPage",
-            "home":"home"
+            "home":"home",
+            "user/preview":"preview",
+            "user/editInfo":"editInfo",
+            "user/availability":"availability",
+            "user/viewRequests":"viewRequests",
+            "user/help":"help",
+            "user/photos":"photos",
+            "user/settings":"settings",
+            "user/addUser":"addUser",
+            "user/social":"social"
         },
 
         initialize: function() {
