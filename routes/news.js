@@ -83,3 +83,17 @@ exports.updateStatus = function(req,res) {
         }
     });
 };
+
+
+exports.leaveComment = function(req,res) {
+    var data = req.body;
+    var comment = new Comment(data);
+    comment.save(function(err, doc) {
+        console.log("saving comment",doc);
+        if (err) {
+            res.json(500, err.message);
+        } else {
+            res.json(doc.toJSON());
+        }
+    });
+};

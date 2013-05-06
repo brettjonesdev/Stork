@@ -24,6 +24,7 @@ module.exports = function (app) {
     app.get("/babyByUserId/:id", baby.getByUserId);
     app.get("/statusFeed", baby.getStatusFeed);
     app.get("/comments", baby.getComments);
+    app.post("/comment", news.leaveComment);
     app.get("/newsItems", news.getNewsItems);
 
     console.log("routes configured");

@@ -1,11 +1,14 @@
+//See Status.js Schema in mongoose
 define(['backbone'], function(Backbone) {
     return Backbone.Model.extend({
         urlRoot: "/status",
         idAttribute: "_id",
-        defaults: {
-            message: undefined,
-            time: undefined,
-            milestone: undefined
+
+        validation: {
+            message: {
+                required: true,
+                msg: "Please enter a message!"
+            }
         }
     });
 });

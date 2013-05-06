@@ -4,7 +4,7 @@ var mongooseTypes = require("mongoose-3x-types");
 var useTimestamps = mongooseTypes.useTimestamps;
 
 var StatusSchema = new Schema({
-    babyCode:{ type:String, unique: true, required: true },
+    babyCode:{ type:String, required: true },
     message: { type:String, required:true},
     milestone: Boolean,
     private: Boolean,

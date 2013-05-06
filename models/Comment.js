@@ -4,7 +4,7 @@ var mongooseTypes = require("mongoose-3x-types");
 var useTimestamps = mongooseTypes.useTimestamps;
 
 var CommentSchema = new Schema({
-    babyCode:{ type:String, unique: true, required: true },
+    babyCode:{ type:String, required: true },
     message: { type:String, required:true},
     from: {type:String, required: true},
     fromEmail: {type:Schema.Types.Email, required: true}

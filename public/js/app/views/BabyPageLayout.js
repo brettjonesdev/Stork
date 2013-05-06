@@ -1,11 +1,12 @@
-define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'collections/StatusCollection', 'collections/CommentsCollection', 'hbs!template/babyPage', 'views/BabyInfoView', 'views/StatusFeedView', 'views/CommentsView', 'views/LoadingView'],
-    function (App, Marionette, _, Handlebars, BabyModel, StatusCollection, CommentsCollection, template, BabyInfoView, StatusFeedView, CommentsView, LoadingView) {
+define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'collections/NewsItemCollection', 'models/CommentModel', 'hbs!template/babyPage', 'views/BabyInfoView', 'views/NewsFeedView', 'views/LeaveCommentView', 'views/LoadingView'],
+    function (App, Marionette, _, Handlebars, BabyModel, NewsItemCollection, CommentModel, template, BabyInfoView, NewsFeedView, LeaveCommentView, LoadingView) {
         return Marionette.Layout.extend({
             template:template,
+            model: new BabyModel(),
             regions:{
                 babyInfoRegion:"#babyInfoRegion",
-                statusFeedRegion:"#statusFeedRegion",
-                commentsRegion:"#commentsRegion"
+                newsFeedRegion:"#newsFeedRegion",
+                leaveCommentRegion:"#leaveCommentRegion"
             },
 
             initialize:function () {
@@ -13,31 +14,25 @@ define([ 'App', 'marionette', 'underscore', 'handlebars', 'models/BabyModel', 'c
                     App.error("Must pass BabyPage a model");
                 }
             },
+            alert:function() {
+               alert("Here!");
+            },
 
             onRender:function () {
                 this.babyInfoRegion.show(new BabyInfoView({model:this.model}));
-                this.statusFeedRegion.show(new LoadingView({loadTime:300}));
-                this.commentsRegion.show(new LoadingView({loadTime:300}));
+                this.newsFeedRegion.show(new LoadingView({loadTime:300}));
+                var leaveCommentView = new LeaveCommentView();
+                leaveCommentView.on("leave-comment", this.render);
+                this.leaveCommentRegion.show(leaveCommentView);
 
                 var that = this;
-                var statusCollection = new StatusCollection();
-                statusCollection.fetch({
+                var newsItemCollection = new NewsItemCollection();
+                newsItemCollection.fetch({
                     data: {
-                        id: this.model.id
+                        babyCode: this.model.get("babyCode")
                     },
                     success: function(collection) {
-                        that.statusFeedRegion.show(new StatusFeedView({collection:collection}));
-                    },
-                    error: App.syncError
-                });
-
-                var commentsCollection = new CommentsCollection();
-                commentsCollection.fetch({
-                    data: {
-                        id: this.model.id
-                    },
-                    success: function(collection) {
-                        that.commentsRegion.show(new CommentsView({collection:collection}));
+                        that.newsFeedRegion.show(new NewsFeedView({collection:collection}));
                     },
                     error: App.syncError
                 });

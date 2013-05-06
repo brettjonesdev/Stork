@@ -8,6 +8,8 @@ define(["App", "jquery", "underscore", "marionette", "handlebars", "util/ViewVal
             formInit: function() {
                 _.bindAll(this);
                 this.on("render", this.on_render);
+                this.on("change form input", this.inputChanged);
+                this.on("change form select", this.inputChanged);
             },
 
             events:{
